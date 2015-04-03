@@ -1,0 +1,44 @@
+<ion-view view-title="Build Your Boat:">
+  <ion-content> 
+    
+
+<div class="intro">
+  <h3>You Will Need a Boat for Your Journey.</h3>
+</div>
+   
+   <ion-scroll direction="x" class="wide-as-needed bold">
+  
+    <div>
+      <a class="button button-assertive button-Min100" ui-sref="members.boat.1">Boat</a>
+      <a class="button button-assertive button-Min100" ui-sref="members.boat.2">Paddles</a>
+      <a class="button button-assertive button-Min100" ui-sref="members.boat.3">Drag</a>
+      <a class="button button-assertive button-Min100 icon-left ion-locked" disabled="true">Engines</a>
+      <a class="button button-assertive button-Min100 icon-left ion-locked" disabled="true">Engine Wt</a>
+      <a class="button button-assertive button-Min100 icon-left ion-locked" disabled="true">Fuel</a>
+      <a class="button button-assertive button-Min100 icon-left ion-locked" disabled="true">Charts</a>
+    </div>
+  </ion-scroll>
+    
+    <div></div>
+  
+    <ion-nav-view name="boatview" style="height:220%"> 
+
+        </ion-nav-view>
+    
+
+    
+    
+    <!-- ++++++++++++++++++++++++++++++ Zubair Comment 10th March,2015 +++++++++++++++++++++++++++++++++
+    
+    All the boat pages and routing you have done were totally correct. I just provided height css property in the
+    ion-nav-view where pages are loading. And 500% is basically the maximum height of any mobile screen. So
+    our template will now have quite much space to be get loaded.
+    
+    
+    -->
+    
+    
+    </div>
+    
+  </ion-content>
+</ion-view> 

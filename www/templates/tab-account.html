@@ -1,0 +1,137 @@
+<ion-view view-title="Account Settings">
+  <ion-content>
+    <div class="list list-inset">
+
+      <!--
+      <a class="item item-icon-left item-icon-right" ui-sref="members.boat">
+        <i class="icon ion-chevron-left icon-accessory"></i>        
+        Build Your Boat
+        <i class="icon ion-help-buoy"></i>
+      </a>
+      -->
+      
+      <a class="item item-icon-left item-icon-right item-remove-animate"  ui-sref="members.profile">
+        <i class="icon ion-person"></i>
+        My Profile
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+      
+
+      <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-cloud"></i>
+        My Dreams
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+
+      <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-leaf"></i>
+        My QiTree
+        <span class="badge badge-assertive">26</span>
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+
+<!--
+      <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-email"></i>
+        Inbox
+        <span class="badge badge-assertive">5</span>
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+
+
+      <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-chatbubble-working"></i>
+        Feedback        
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+            
+
+      <a class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-alert-circled"></i>
+        Support   
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </a>
+      -->
+      
+      
+
+      <a class="item item-icon-left item-icon-right" href="#">
+        <!-- <i class="icon ion-earth"></i> -->
+        Welcome Message to New Members: <br>
+        <input type="textbox" style="height:70px; margin:5px"><br>
+        
+          <!-- <ion-option-button class="button-balanced" ng-click="function()" style="margin:5px">
+           Save My Message
+         </ion-option-button >-->
+
+        <!--     
+        
+        
+        
+       <!-- <i class="icon ion-android-download"></i> -->
+       
+       <!--
+                                    ++++++++++++++++++++++++++++++++++
+                                    Zubair Comment:
+                      The above ion-option-button directive is not used properly, so it is generating errors, thats why I have
+                      commented it..! Instead of ion-option-button, use normal html5 button with ionic class
+                                                +++++++++++++++++++++++++++++++++++    -->
+       
+
+<button class="button button-balanced" ng-click="" style="margin:5px">Save My Message</button>
+
+      </a>
+<!--
+      <div class="itemS">
+        <div width="40%">My Welcome Message </div>
+            <div>
+              <label class="item-input-wrapper"> 
+                <input type="textbox" placeholder="Welcome to my team!" width="80%">
+              </label>
+              <button class="button button-small">
+                Save
+              </button>
+            </div>
+            
+          </div>
+        -->
+        
+        <ion-item class="item-toggle">
+        Enable Email Digest (1 email per day)
+        <label class="toggle toggle-balanced">
+          <input type="checkbox" ng-model="settings.enableFriends">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </ion-item>
+
+
+    </div>
+  <!--
+    <ion-list>
+
+      <ion-item icon="ion-person">My Profile</ion-item>
+
+      <ion-item>b</ion-item>
+
+      <ion-item>c</ion-item>
+
+      <ion-item>d</ion-item>
+
+      <ion-item>e</ion-item>
+
+      <ion-item class="item-toggle">
+        Enable Email Digest
+        <label class="toggle">
+          <input type="checkbox" ng-model="settings.enableFriends">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </ion-item>
+
+    </ion-list>
+  -->
+  </ion-content>
+</ion-view>

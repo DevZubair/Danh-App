@@ -1,0 +1,126 @@
+/* Empty. Add your own CSS if you like */
+ion-content {
+	background-color: #E2E5FC;
+}
+
+
+h1, h2, h3 {
+    font-family: 'Lobster', cursive;
+}
+
+.intro{
+    text-align:center;
+    padding:10px;
+    text-decoration:bold;
+}
+
+.gridBox{
+    padding:5px;
+    background-color:white;
+    border:1px solid blue;
+}
+
+.button-Steps{
+    border-radius:5px;
+}
+
+.button-Next{
+    float:right;
+}
+
+.button-Min100{
+    min-width:100px;
+}
+
+.wide-as-needed {
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+label.item.has-error {
+  border-bottom: 2px solid red;
+}
+
+label.item.has-error-lr {
+  border-left: 2px solid red;
+  border-right: 2px solid red;
+}
+
+label.item.valid-lr {
+  border-left: 2px solid green;
+  border-right: 2px solid green;
+}
+
+.form-errors {
+  margin: 5px 0
+}
+
+.form-error {
+  padding: 2px 0 2px 16px;
+  color: red;
+}
+
+.validationMsg > p{
+    
+    color:red;
+    font-family:cursive;
+    font-size:12px;
+    text-align:center;
+}
+
+.text-white{
+  color:white;
+}
+
+.text-black{
+  color:black;
+}
+
+.images-right-50{
+  max-width:300px;
+  width:50%;
+  margin: 10px;
+  float:right;
+}
+
+
+.images-left-50{
+  max-width:300px;
+  width:50%;
+  margin: 10px;
+  float:left;
+}
+
+.images-center{
+  max-width:300px;
+  width:70%;
+  margin: 10px;
+  
+}
+
+.white-box{
+  background-color:white;
+}
+
+.div-rounded{
+  border:1px solid black; 
+  border-radius:5px; 
+  background-color:floralwhite;
+  padding:10px;
+}
+
+.subtitle{
+  font-weight:bold; 
+  text-align:center;
+  color:brown;
+}
+
+.scroll{
+  
+  
+  
+height:500%;
+  
+  
+  
+}

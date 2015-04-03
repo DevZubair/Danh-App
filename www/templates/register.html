@@ -1,0 +1,107 @@
+<ion-view view-title="Register">
+  <ion-content>
+    
+     <ion-nav-bar class="bar-royal">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+      </ion-nav-bar>
+    
+    
+    <div class="card">
+      <div class="item item-divider">
+        Register New Account
+      </div>
+      <div class="item item-text-wrap">
+        <form name="form-Register">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">First Name</span>
+              <input type="text" placeholder="First Name" ng-model="$parent.firstName">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Last Name</span>
+              <input type="text" placeholder="Last Name"  ng-model="$parent.lastName">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input type="text" name="email" placeholder="Email"  ng-model="$parent.userEmail" ng-Required>
+              
+            </label>
+            
+             <div class="validationMsg">
+             <p ng-show="emailValid">Email is not valid</p>
+            </div>
+            
+            <label class="item item-input">
+              <span class="input-label">Username</span>
+              <input type="text" name="username" placeholder="Choose a new username"  ng-model="$parent.userName" ng-Required maxlength="20"> 
+                       
+                      
+           
+              
+            </label>
+            
+            <div class="validationMsg">
+              <p ng-show="usernameEmpty">This field is required</p>
+              <p ng-show="usernameGreater">This field must be less than 20 characters</p>
+              <p ng-show="usernameGreaterThanFive">This field must be greater than 5 characters</p>
+              
+            </div>
+            
+            
+            
+            <label class="item item-input">
+              <span class="input-label">Password</span>
+              <input type="password" name="password" placeholder="Choose a new password"  ng-model="$parent.userPassword" ng-Required maxlength="20">
+         
+                
+      
+            </label>
+            
+             <div class="validationMsg">
+              <p ng-show="passwordEmpty">This field is required</p>
+              <p ng-show="usernameGreater">This field must be less than 20 characters</p>
+              <p ng-show="usernameGreaterThanFive">This field must be greater than 5 characters</p>
+              
+            </div>
+            
+            
+            <label class="item item-input">
+              <span class="input-label">Mentor</span>
+              <input type="text" placeholder="Your Mentor"  ng-model="$parent.userMentor">
+            </label>
+            
+            <label class="item">
+              <button class="button button-block icon-left ion-edit button-balanced" 
+                type="submit" 
+                ng-click="addMember()"  
+                >
+                Register Me
+              </button>
+              
+             <!-- ng-disabled= "form-Register.username.$dirty && form-Register.username.$invalid ||
+                  form-Register.email.$dirty && form-Register.email.$invalid ||
+                  for-Register.password.$dirty && form-Register.password.$invalid"-->
+              
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
+
+<!--  +++++++++++++++++++++++++++++ Zubair Comment 14th March, 2015 +++++++++++++++++++++++++++++++++++++++
+
+  Here above you can see that I have just used simply ng-show for each error div. These ng-show will be true from my controller when a user submits
+  the registration button. A validation is checked from the controller that if fields are empty or length is not correct than error will be prompted
+  in a small red font below the field. 
+  Moreover: There is already a built in attribute of maximum and minimum length of HTML5 input fields. I have used those in username and password
+            fields so that user will not be able to enter characters greater than 20. 
+
+
+
+-->
+
+

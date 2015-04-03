@@ -1,0 +1,91 @@
+
+   
+<!--   
+
+                         +++++++++++++++ Zubair Comment 3/March/2015 ++++++++++++++++++
+
+   The above code I have commented which you have written, ion-view and ion-content tags were creating the 
+   problem, you don't actually need to put the parent template within a ion-view tag. members.html is 
+   a parent template and all the tabs chats, friends, mission, account are the childs templates. I have
+   described this relation more in routing. Please see. 
+   
+   -->
+   
+   
+    <!-- The nav bar that will be updated as we navigate between views. -->
+   <ion-nav-bar class="bar-royal">
+        <ion-nav-back-button></ion-nav-back-button>
+       
+     
+    </ion-nav-bar>
+    
+    <ion-tabs class="tabs-icon-top tabs-color-active tabs-royal">
+
+      <!-- Mission Tab -->
+      <ion-tab title="Start" icon-off="ion-ios7-play-outline" icon-on="ion-ios7-play" href="#/members/mission"></tab>">
+        <ion-nav-view name="tab-mission"></ion-nav-view>
+      </ion-tab>
+      
+
+    
+  <!-- ++++++++++++++++++++++++++ Zubair Comment 3/March/2015  +++++++++++++++++++++++++++++++
+   
+   All the href copied from the tab template contains #/tab/account e.g but actually we need members instead of 
+   tab because our parent template is members now. 
+    -->
+    
+      <!-- Inbox Tab -->
+      <ion-tab title="Inbox" icon-off="ion-ios7-chatboxes-outline" icon-on="ion-ios7-chatboxes" href="#/members/chats"> 
+        <span class="badge badge-assertive">5</span>
+        <ion-nav-view name="tab-chats"></ion-nav-view>
+      </ion-tab>
+    
+      <!-- Friends Tab -->
+      <ion-tab title="Tree" icon-off="ion-ios7-heart-outline" icon-on="ion-ios7-heart" href="#/members/friends">
+        <ion-nav-view name="tab-friends"></ion-nav-view>
+      </ion-tab>
+    
+      <!-- Account Settings Tab 
+      <ion-tab title="Settings" icon-off="ion-ios7-gear-outline" icon-on="ion-ios7-gear" ui-sref="members.account">
+        <ion-nav-view name="tab-account"></ion-nav-view>
+      </ion-tab>
+            -->
+      
+      <ion-tab title="More" icon-off="ion-navicon" icon-on="ion-navicon" ng-click="toggleRight()" menu-toggle="right">
+       <ion-nav-view name="tab-account"></ion-nav-view>
+      </ion-tab>
+
+      
+      
+      
+      <!--
+      
+      ++++++++++++++++++++++++++++++ Zubair Comment 9th March 2015 ++++++++++++++++++++++++++++++++++++
+      
+      Please note above that we have used tab for side Menu, there is no need to have a ion-nav-view here because it 
+      is important to know that side menu is going to work on all pages so we can not make it fixed for any single
+      view. 
+      
+      Question: 
+      Where is the view for menu than?
+      
+      Answer:
+      everything in our app who has no defined views, meaning no ion-nav-view name="", than that particular
+      template will load from main index.html ion-nav-view. Please see index.html
+      This is the reason that side-menu will work on every page.
+      
+      
+      -->
+      
+      
+
+
+    </ion-tabs>
+
+<!--  </ion-content>-->
+  <!--  
+</ion-view>-->
+
+   
+
+

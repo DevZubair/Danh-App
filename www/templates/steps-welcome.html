@@ -1,0 +1,62 @@
+
+ 
+ <div class="padding">
+    <div class="item item-divider item-balanced" >          
+      <h2 class="text-white">Welcome!</h2>
+    </div>
+    
+    
+    <!--   +++++++++++++++++++++++++++ Zubair Comment 3rd April, 2015 ++++++++++++++++++++++++++++++
+    
+    Below is the code which you have written, well all the work you have done was perfectly right but you just made the small spelling mistakes. You can
+    see the 'revert file' settings in cloud9 where you can see the video of how and what changes I have made. You called the ng-model with a separate 
+    name whereas you made the $scope variable in the controller with the different name. This has caused the problem.
+    
+    
+    -->
+    
+       
+    <div class="item item-text-wrap white-box">
+      <input ng-model="userName" type="text" ng-value="userName" >
+      <input ng-model="firstName" type="text" ng-value="firstName" >
+      <input ng-model="mentorName" type="text" ng-value="mentorName" >
+      <div class="row">
+        <div class="col"><img src="img/welcome.png" class="images-right-50"></img>
+          Hi <b>{{firstName}}!</b> Your username is <b>{{userName}}</b><br><br> Welcome to RESIDUALS.  Let's first get you settled in with a quick tour.<br><br>
+          You were invited by <b>{{mentorname-model}}</b>, but you also have 3 other mentors who can also help you should you get stuck.<br><br>
+          This app was designed to help you use your mobile phone to build up passive income streams. Just follow these <b>Stepping Stones</b> guide and you will be guided through everything.</div></div>
+      <div class="row">
+        <div class="col">
+          <img src="img/welcome-point.png" class="images-left-50"></img> 
+          Across the top, you should see all Steps.  There are more when you scroll to the right.  Click NEXT after you finish each Step and the next one will be unlocked.  Each Step will reveal a lesson that will reveal the system to you.
+        </div>
+      </div>
+    
+    
+    </div>
+        
+       
+    <div class="item item-divider item-balanced" >          
+     <h2 style="color:white">Summary:</h2>
+    </div>
+        
+    <div class="item item-text-wrap">
+      <div class="row">
+        <div class="col">
+          Use these <b>Stepping Stones</b> to learn how the app works.  Click the <b>NEXT</b> button at the end of each lesson to move further into the app.
+        </div>
+      </div>
+    </div>
+  </div>
+        
+    <div class="padding" style="height:100px">
+      <button class="button button-balanced icon-right ion-chevron-right" style="float:right" ui-sref="members.steps.about">Go To Step #2</button>
+    </div>
+    
+ 
+  
+  <div class="padding">
+    <p style="text-align:center"><small>Disclaimer2: The viewpoints expressed here are the opinions of Residuals.mobi and do not represent certified financial or investment advise, nor does is guarrantee any success or profit should you follow it.  You are encouraged to seek consultation with a certified professional if you need such services.</small></p>
+  </div>
+  
+ 

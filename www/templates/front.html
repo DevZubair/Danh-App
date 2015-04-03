@@ -1,0 +1,50 @@
+<ion-view>
+  <!--
+  <ion-header-bar>
+    <h1 class="title">Welcome!</h1>
+  </ion-header-bar>
+  -->
+  
+    <ion-content style="background:white">
+      <div class="intro" style="text-align:center"> 
+        <h1>Residuals<br></h1>
+        <img src="img/business-people2.png" style="max-width:500px; width:100%"></img>
+        <h3>"More Time For Life."</h3>
+      </div>
+      <div class="padding">
+        <button class="button button-block icon-left ion-log-in button-royal" ui-sref="login">Log Me in</button>
+        
+        <button class="button button-block icon-left ion-edit button-royal" ui-sref="register">Register New User</button>  
+        
+        <!-- temp button to bypass login process -->
+        <button class="button button-block icon-left ion-arrow-right-c button-royal" ui-sref="members.steps"> Go to Members Area Without Logging in </button>
+
+      </div>
+  
+     <!--      ++++++++++++++++++++ Zubair Comment 3/March/2015 ++++++++++++++++++++++++++
+      
+      Please note above that I have written members.chats in the ui-sref and not specifically written members
+      here in the ui-sref. There is a reason:
+      
+      -> Concept:
+      Always remember that we can not access to a parent state directly using ui-sref or any href. Parent states
+      are not accessed directly and if we do so than an error is generated "Cannot transition to abstract state".
+      So that's why I have accessed to any child state and automatically all the childs are covered with the 
+      parent layer. Hope you understand this. I'll share a link on elance for more.-->
+      
+
+      
+        
+       <!-- +++++++++++++++++++++++++++++++ Zubair Comment +++++++++++++++++++++++++++++
+       
+       Here I have removed the ion-nav-view tag which you have put for login, because as I have mentioned
+        earlier in the routing section that you don't need to have different views for login, register becuase
+        we want these pages to be accessed from front page.
+        
+        -->
+       
+        
+   </ion-content>
+
+
+</ion-view>

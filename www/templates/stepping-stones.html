@@ -1,0 +1,80 @@
+<ion-view view-title="Stepping Stones:">
+  <ion-content>
+    
+  
+  
+    <div class="intro"><h3>"See How It Works - 1 Step at a Time."</h3></div>
+    
+
+       <ion-scroll direction="x" class="wide-as-needed">
+       
+       <!-- removed the repeating buttons to replace with real html pages
+         <div ng-repeat="steps in stepsList" style="display:inline">
+     
+      <button class="button button-assertive icon-left ion-locked" disabled=true>{{steps}}</button>
+        
+        </div>
+        
+        -->
+        
+      <div style="display:inline" ng-click='changeTest()'>
+     
+     
+      <button class="button button-balanced" ui-sref="members.steps.welcome">Welcome!</button>
+      <button class="button button-balanced" ui-sref="members.steps.about">About</button>
+      <button class="button button-balanced" ui-sref="members.steps.boat">Boat</button>
+      <button class="button button-balanced" ui-sref="members.steps.time">Time</button>
+      <button class="button button-balanced" ui-sref="members.steps.mobilize">Mobilize</button>
+      <button class="button button-balanced" ui-sref="members.steps.origins">Origins</button>
+      <button class="button button-balanced" ui-sref="members.steps.why">Why</button>
+      <button class="button button-balanced" ui-sref="members.steps.wrong">Wrong</button>
+      <button class="button button-balanced" ui-sref="members.steps.owned">Owned</button>
+      <button class="button button-balanced" ui-sref="members.steps.delay">Delay</button>
+      <button class="button button-balanced" ui-sref="members.steps.portfoolio">PortFOOLio</button>
+      <button class="button button-balanced" ui-sref="members.steps.health">Health</button>
+      <button class="button button-balanced" ui-sref="members.steps.planb">Plan B</button>
+      <button class="button button-balanced" ui-sref="members.steps.active">Active</button>
+      <button class="button button-balanced" ui-sref="members.steps.passive">Passive</button>
+      <button class="button button-balanced" ui-sref="members.steps.retire">Retire</button>
+      <button class="button button-balanced" ui-sref="members.steps.residuals">Residuals</button>
+      <button class="button button-balanced" ui-sref="members.steps.repeat">Repeat</button>
+      <button class="button button-balanced" ui-sref="members.steps.leverage">Leverage</button>
+      <button class="button button-balanced" ui-sref="members.steps.techie">Techie</button>
+      <button class="button button-balanced" ui-sref="members.steps.support">Support</button>
+      <button class="button button-balanced" ui-sref="members.steps.seeds">Seeds</button>
+      <button class="button button-balanced" ui-sref="members.steps.mini-me">Mini-Me</button>
+      <button class="button button-balanced" ui-sref="members.steps.system">System</button>
+      <button class="button button-assertive icon-left ion-locked" disabled=true>1-Hour</button>
+        </div>
+        
+        
+     </ion-scroll>
+     
+     <div class="padding" ng-show="showDisclaimer">
+    <small style="text-align:center">Disclaimer1: The viewpoints expressed here are the opinions of Residuals.mobi and do not represent certified financial or investment advise, nor does is guarrantee any success or profit should you follow it.  You are encouraged to seek consultation with a certified professional if you need such services.</small>
+    </div>
+     
+    
+      <ion-nav-view name="steps-view" class="scroll">
+       
+       
+       
+      
+       
+     </ion-nav-view>
+     
+
+   
+  
+  
+ 
+  </ion-content>
+  
+  
+  
+  
+  
+</ion-view>
+
+
+  

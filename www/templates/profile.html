@@ -1,0 +1,136 @@
+<ion-view view-title="My Profile">
+  <ion-content>
+
+<!-- added nav bar back to see if I can access settings tab again-->
+    <!--  <ion-nav-bar class="bar-royal">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+      </ion-nav-bar>-->
+      
+      <!-- +++++++++++++++++++++++++++ Zubair Comment 9th March, 2015 +++++++++++++++++++++++++++
+    
+    Please remember that you can not use two nav-bars in a single view. Above nav-bar code you have used is
+    not a valid code, this is the reason that page was not loading correctly. nav-bar is already coming from members.html
+    page so all the child states are inheriting the nav-bar.
+    
+    
+    
+  -->  
+    
+      <div class="card">
+      
+      <div class="item item-divider">
+        Update Your Profile Below:
+      </div>
+      
+      <div class="item item-text-wrap">
+        <form>
+      <div class="row padding">
+      <div class="col col-25" style="height:150px" ><i class="ion-camera" style="font-size:30px" ng-click="addImage()"></i> </div>
+    <div class="col col-50" style="height:150px; width:150px; border: 1px dotted blue">
+      
+      <img id="myImage" ng-src="{{image.src}}" style="height:100%;width:100%">
+    </div>
+    <div class="col col-25 col-offset-10" ng-click="browseImages()">
+      <i class="ion-images" style="font-size:30px"></i>
+      
+    </div>
+    </div>
+    
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">First Name</span>
+              <input type="text" placeholder="firstName" ng-model="currentUserData.Firstname">
+            </label>
+            
+            <label class="item item-input">
+              <span class="input-label">Last Name</span>
+              <input type="text" placeholder="lastName"  ng-model="currentUserData.Lastname">
+            </label>
+            
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input type="text" placeholder="userEmail"  ng-model="currentUserData.Email" readonly>
+              <i type="icon" style="icon-right ion-locked"></i>
+            </label>
+            
+            <label class="item item-input">
+              <span class="input-label">Username</span>
+              <input type="text" placeholder="userName"  ng-model="$parent.userNewName" readonly>
+            </label>
+            
+              <label class="item item-input">
+              <span class="input-label">Old Password</span>
+              <input type="password" placeholder="Enter your old password"  ng-model="$parent.userOldPassword">
+            </label>
+            
+            <label class="item item-input">
+              <span class="input-label">New Password</span>
+              <input type="password" placeholder="Choose your new password"  ng-model="$parent.userNewPassword">
+            </label>
+            
+            <label class="item item-input">
+              
+              <span class="input-label">About Me</span>
+              <input type="textarea" placeholder="Let us know a bit more about you."  ng-model="currentUserData.Aboutme">
+            </label>
+            
+            <label class="item">
+              <button class="button button-block icon-left ion-edit button-balanced" type="submit" ng-click="updateUserInfo()">Update Now</button>
+            </label>
+          </div>
+        </form>
+        
+        
+        
+      </div>
+    </div>
+    
+  
+
+    
+    </ion-content>
+    </ion-view>
+    
+    
+    <!-- ++++++++++++++++++++++++++++++ Zubair Comment 24th March, 2015 ++++++++++++++++++++++++++++++++++++
+    
+    Below I have added a template with a new format which we don't usually see, it's script tag. Well I could have made this template into another file 
+    and save it in our templates folder as we are doing it so far but this script thing saves our time and plus it can be called easily without
+    giving it reference or url to the app.js routing.
+    
+    Things Done:
+    
+    I have used this template for opening a modal of ionic which will show the gallery of user containing all the previous user profile pictures which
+    were saved in mongoLab. A user can select any picture and that picture will be selected as the current profile picture.
+    Simple ng-repeat is working for showing all the images, please see profile controller where I have called this template and send an array aImages
+    which is full of images.
+    
+    
+    
+    -->
+    
+    
+    <script id="templates/modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">Profile Pictures</h1>
+          <button class="button button-clear button-primary" ng-click="closeModal()">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+         
+            
+            <div ng-repeat="userImages in aImages">
+            
+            
+             <div class="col col-50" style="height:150px; width:150px; border: 2px dotted black">
+      
+      <img id="myImage" ng-src="{{userImages.src}}" style="height:100%;width:100%" ng-click="setProfilePic($index)">
+    </div>
+    
+            </div>
+            
+          
+        </ion-content>
+      </ion-modal-view>
+    </script>
