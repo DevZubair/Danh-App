@@ -1,7 +1,7 @@
 var mongoose=require('mongoose');
 var Members=mongoose.model('Members');
 var Jobs=mongoose.model('Jobs');
-// var Locked_Pages =mongoose.model ('Locked_Pages');  add this when schema is made and ready to go? Danh
+var Unlocked_Pages =mongoose.model('Unlocked_Pages'); 
 
 
 // Above we have required the model or we can say schema of mongodb which we have added in Schema.js
@@ -290,14 +290,12 @@ module.exports.jobsTotal=function(req,res){
     
       var memberJobs=req.body; 
   
-                
-
-               
                
                 var member_jobs=new Jobs({
                   
                   userId: memberJobs.userID,
                   username: memberJobs.username,
+                  date: memberJobs.date,
                   jobs: memberJobs.allJobs,
                   jobsTotal: memberJobs.allJobsTotal
                   
@@ -317,5 +315,252 @@ module.exports.jobsTotal=function(req,res){
 
          
     
+    
+};
+
+/* API for setting the default UnLocked Pages at beginning: */
+
+module.exports.UnlockedPagesDefault=function(req,res){
+      
+    /*  +++++++++++++++++ Zubair Comment 15th April, 2015 +++++++++++++++++++++ 
+    
+    Below the code has just added two more fields which is just the userEmail and userName.
+    Well other fields are as it is, you were right about sending the values from here because after registration we just want a fix thing which is that
+    welcome page will be unlocked and other pages will be locked.
+    This API is called from the registeration controller so only two fields are sent from there which are email and username and the rest are already
+    set here directly.
+    
+    */
+      
+      var unlockedPagesDefault=new Unlocked_Pages({
+                  
+      userEmail: req.body.userEmail,
+      userName: req.body.userName,
+      stepsWelcome: true,
+      stepsAbout: false,
+      stepsBoat: false,
+      stepsTime: false,
+      stepsMobilize: false,
+      stepsOrigins: false,
+      stepsWhy: false,  
+      stepsWrong: false,
+      stepsOwned: false,
+      stepsDelay: false,
+      stepsPortfoolio: false,
+      stepsHealth: false,
+      stepsPlanB: false,  
+      stepsActive: false,
+      stepsPassive: false,
+      stepsRetire: false,
+      stepsResiduals: false,
+      stepsRepeat: false,
+      stepsLeverage: false,  
+      stepsTechie: false,
+      stepsSupport: false,
+      stepsSeeds: false,
+      stepsMiniMe: false,
+      stepsSystem: false,
+      steps1Hour: false,  
+      boatIntro: false,
+      boatPaddles: false,
+      boatEngines: false,
+      boatEngineWt: false,
+      boatFuel: false,
+      boatCharts: false,
+      compassIntro: false,
+      compassPaddling: false,
+      compassFloat: false,
+      compassEngine: false,
+      compassCruise: false,
+      compassNofool: false,
+      compassFreedom: false,
+      compassWealth: false,
+      compassDreams: false,
+      engines: false,
+      lake: false,
+      ocean: false
+                    
+                });
+                
+                unlockedPagesDefault.save(function(error){
+                    if(error){
+                        res.send(error);
+
+                    }
+                    else
+
+                        res.send('Pages are locked to begin with');
+                });
+};
+
+module.exports.getMemberUnlockedPages=function(req,res)
+
+{
+
+        /* +++++++++++++++++++++++++ Zubair Comment 18th April, 2015 +++++++++++++++++++++++++++++
+        
+        This API is used to get the current member's unlocked/locked pages list which is than used for the list of buttons at the top of stepping stones
+        page. This API is called as soon as the page loads regardless of any button click or function called, because we need to check the locked/unlocked
+        pages status on every page. Controller is the same for all pages.
+        
+        
+        */
+   
+
+         Unlocked_Pages.findOne({userName:req.body.userName},function(error,data){  
+        
+        if(data){
+            res.send(data);
+        }
+        else{
+            res.send(error);
+            
+        }
+        
+    });
+    
+};
+
+module.exports.updateUnlockedPages=function(req,res)
+
+{
+    
+    /* +++++++++++++++++++++++++++++++++ Zubair Comment 18th April, 2015 ++++++++++++++++++++++++++++
+    
+    This is the main API for our App which will be called when we click the next button along with the 3 parameters (fieldName, field value, page name).
+    Actually what I did here is that I have made a general API for the update query which will work for all of our pages or even more. This API is 
+    a general API. The code for update is a bit different from the previous APIs. What we usually do is that we call the API like this:
+    
+     Unlocked_Pages.update({_id:req.body.id},
+     
+     'stepsAbout':req.body.true
+     
+     
+     false,true);
+     
+     
+     But here if we do the above than this API will be only specific for the stepsAbout or any other page but now what I have done here with the 
+     code, API becomes the general now for all pages.
+    
+    
+    */
+    
+    
+        var query={};
+      query[req.body.fieldName]=true;
+      
+      
+      
+        Unlocked_Pages.update({_id:req.body.id},query,false,true);
+    
+   
+   
+
+         Unlocked_Pages.findOne({_id:req.body.id},function(error,data){  
+        
+        if(data){
+            res.send(data);
+        }
+        else{
+            res.send(error);
+            
+        }
+        
+    });
+    
+};
+
+/*    +++++++++++++++++++++++++++++ Zubair Comment 21st April, 2015 ++++++++++++++++++++++++++++
+
+    Below is the API which I have made for the reset button click and it will reset everything to the default settings. This API is called from the 
+    sideBar controller which I have made just now so that all the functions of sidebar will managed from there. I have just send the username with which it will check the current data in the database and will update the 
+    fields with the newly send data. 
+    It is very much similar to the API which is called after registration but this API is of update query and the previous one was post request.
+
+
+
+*/
+
+module.exports.resetMemberUnlockedPages=function(req,res){
+      
+    Unlocked_Pages.update({userName:req.body.userName},{
+        
+      'stepsWelcome': true,
+      'stepsAbout': false,
+      'stepsBoat': false,
+      'stepsTime': false,
+      'stepsMobilize': false,
+      'stepsOrigins': false,
+      'stepsWhy': false,  
+      'stepsWrong': false,
+      'stepsOwned': false,
+      'stepsDelay': false,
+      'stepsPortfoolio': false,
+      'stepsHealth': false,
+      'stepsPlanB': false,  
+      'stepsActive': false,
+      'stepsPassive': false,
+      'stepsRetire': false,
+      'stepsResiduals': false,
+      'stepsRepeat': false,
+      'stepsLeverage': false,  
+      'stepsTechie': false,
+      'stepsSupport': false,
+      'stepsSeeds': false,
+      'stepsMiniMe': false,
+      'stepsSystem': false,
+      'steps1Hour': false,  
+      'boatIntro': false,
+      'boatPaddles': false,
+      'boatEngines': false,
+      'boatEngineWt': false,
+      'boatFuel': false,
+      'boatCharts': false,
+      'compassIntro': false,
+      'compassPaddling': false,
+      'compassFloat': false,
+      'compassEngine': false,
+      'compassCruise': false,
+      'compassNofool': false,
+      'compassFreedom': false,
+      'compassWealth': false,
+      'compassDreams': false,
+      'engines': false,
+      'lake': false,
+      'ocean': false
+       
+        
+        
+        
+    },false,true);
+    
+       Unlocked_Pages.findOne({userName:req.body.userName},function(err,data){
+        if(err)
+            res.send(err);
+        else
+        {
+            res.send(data);
+        }
+    });
+   
+};
+
+
+module.exports.getJob=function(req,res)
+
+{
+
+     
+         Jobs.findOne({date:req.body.date},function(error,data){  
+        
+        if(data){
+            res.send(data);
+        }
+        else{
+            res.send(error);
+            
+        }
+        
+    });
     
 };

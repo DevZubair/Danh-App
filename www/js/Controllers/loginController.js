@@ -47,7 +47,7 @@ $scope.doLogin=function(){
   */
   
     
-  $http.post('https://danhproject-devzubair-4.c9.io/api/loginMember',{
+  $http.post('https://danh-app-devzubair.c9.io/api/loginMember',{
       
       userName:$scope.loginData.username
       

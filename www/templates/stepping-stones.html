@@ -6,73 +6,50 @@
     <div class="intro"><h3>"See How It Works - 1 Step at a Time."</h3></div>
     
 
-       <ion-scroll direction="x" class="wide-as-needed">
+       <ion-scroll direction="x" scrollbar-x="false" class="wide-as-needed">
        
-       <!-- removed the repeating buttons to replace with real html pages
-         <div ng-repeat="steps in stepsList" style="display:inline">
-     
-      <button class="button button-assertive icon-left ion-locked" disabled=true>{{steps}}</button>
-        
-        </div>
-        
-        -->
+
         
       <div style="display:inline" ng-click='changeTest()'>
+          
      
-     
-      <button class="button button-balanced" ui-sref="members.steps.welcome">Welcome!</button>
-      <button class="button button-balanced" ui-sref="members.steps.about">About</button>
-      <button class="button button-balanced" ui-sref="members.steps.boat">Boat</button>
-      <button class="button button-balanced" ui-sref="members.steps.time">Time</button>
-      <button class="button button-balanced" ui-sref="members.steps.mobilize">Mobilize</button>
-      <button class="button button-balanced" ui-sref="members.steps.origins">Origins</button>
-      <button class="button button-balanced" ui-sref="members.steps.why">Why</button>
-      <button class="button button-balanced" ui-sref="members.steps.wrong">Wrong</button>
-      <button class="button button-balanced" ui-sref="members.steps.owned">Owned</button>
-      <button class="button button-balanced" ui-sref="members.steps.delay">Delay</button>
-      <button class="button button-balanced" ui-sref="members.steps.portfoolio">PortFOOLio</button>
-      <button class="button button-balanced" ui-sref="members.steps.health">Health</button>
-      <button class="button button-balanced" ui-sref="members.steps.planb">Plan B</button>
-      <button class="button button-balanced" ui-sref="members.steps.active">Active</button>
-      <button class="button button-balanced" ui-sref="members.steps.passive">Passive</button>
-      <button class="button button-balanced" ui-sref="members.steps.retire">Retire</button>
-      <button class="button button-balanced" ui-sref="members.steps.residuals">Residuals</button>
-      <button class="button button-balanced" ui-sref="members.steps.repeat">Repeat</button>
-      <button class="button button-balanced" ui-sref="members.steps.leverage">Leverage</button>
-      <button class="button button-balanced" ui-sref="members.steps.techie">Techie</button>
-      <button class="button button-balanced" ui-sref="members.steps.support">Support</button>
-      <button class="button button-balanced" ui-sref="members.steps.seeds">Seeds</button>
-      <button class="button button-balanced" ui-sref="members.steps.mini-me">Mini-Me</button>
-      <button class="button button-balanced" ui-sref="members.steps.system">System</button>
-      <button class="button button-assertive icon-left ion-locked" disabled=true>1-Hour</button>
+      <button id="stepsWelcome" class="button button-balanced" ui-sref="members.steps.stepsWelcome" ng-disabled="!memberLockedPages.stepsWelcome">Welcome!</button>
+      <button id="stepsAbout" ng-class="!memberLockedPages.stepsAbout ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsAbout" ng-disabled="!memberLockedPages.stepsAbout">About</button>
+      <button id="stepsBoat" ng-class="!memberLockedPages.stepsBoat ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsBoat" ng-disabled="!memberLockedPages.stepsBoat">Boat</button>
+      <button id="stepsTime" ng-class="!memberLockedPages.stepsTime ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsTime" ng-disabled="!memberLockedPages.stepsTime">Time</button>
+      <button id="stepsMobilize" ng-class="!memberLockedPages.stepsMobilize ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsMobilize" ng-disabled="!memberLockedPages.stepsMobilize">Mobilize</button>
+      <button id="stepsOrigins" ng-class="!memberLockedPages.stepsOrigins ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsOrigins" ng-disabled="!memberLockedPages.stepsOrigins">Origins</button>
+      <button id="stepsWhy" ng-class="!memberLockedPages.stepsWhy ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsWhyy" ng-disabled="!memberLockedPages.stepsWhy">Why</button>
+      <button id="stepsWrong" ng-class="!memberLockedPages.stepsWrong ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsWrong" ng-disabled="!memberLockedPages.stepsWrong">Wrong</button>
+      <button id="stepsOwned" ng-class="!memberLockedPages.stepsOwned ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsOwned" ng-disabled="!memberLockedPages.stepsOwned">Owned</button>
+      <button id="stepsDelay" ng-class="!memberLockedPages.stepsDelay ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsDelay" ng-disabled="!memberLockedPages.stepsDelay">Delay</button>
+      <button id="stepsPortfoolio" ng-class="!memberLockedPages.stepsPortfoolio ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsPortfoolio" ng-disabled="!memberLockedPages.stepsPortfoolio">Portfolio</button>
+      <button id="stepsHealth" ng-class="!memberLockedPages.stepsHealth ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsHealth" ng-disabled="!memberLockedPages.stepsHealth">Health</button>
+      <button id="stepsPlanB" ng-class="!memberLockedPages.stepsPlanB ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsPlanB" ng-disabled="!memberLockedPages.stepsPlanB">Plan B</button>
+      <button id="stepsActive" ng-class="!memberLockedPages.stepsActive ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsActive" ng-disabled="!memberLockedPages.stepsActive">Active</button>
+      <button id="stepsPassive" ng-class="!memberLockedPages.stepsPassive ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsPassive" ng-disabled="!memberLockedPages.stepsPassive">Passive</button>
+      <button id="stepsRetire" ng-class="!memberLockedPages.stepsRetire ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsRetire" ng-disabled="!memberLockedPages.stepsRetire">Retire</button>
+      <button id="stepsResiduals" ng-class="!memberLockedPages.stepsResiduals ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsResiduals" ng-disabled="!memberLockedPages.stepsResiduals">Residuals</button>
+      <button id="stepsRepeat" ng-class="!memberLockedPages.stepsRepeat ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsRepeat" ng-disabled="!memberLockedPages.stepsRepeat">Repeat</button>
+      <button id="stepsLeverage" ng-class="!memberLockedPages.stepsLeverage ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsLeverage" ng-disabled="!memberLockedPages.stepsLeverage">Leverage</button>
+      <button id="stepsTechie" ng-class="!memberLockedPages.stepsTechie ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsTechie" ng-disabled="!memberLockedPages.stepsTechie">Techie</button>
+      <button id="stepsSupport" ng-class="!memberLockedPages.stepsSupport ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsSupport" ng-disabled="!memberLockedPages.stepsSupport">Support</button>
+      <button id="stepsSeeds" ng-class="!memberLockedPages.stepsSeeds ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsSeeds" ng-disabled="!memberLockedPages.stepsSeeds">Seeds</button>
+      <button id="stepsMiniMe" ng-class="!memberLockedPages.stepsMiniMe ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsMiniMe" ng-disabled="!memberLockedPages.stepsMiniMe">Mini-Me</button>
+      <button id="stepsSystem" ng-class="!memberLockedPages.stepsSystem ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.stepsSystem" ng-disabled="!memberLockedPages.stepsSystem">System</button>
+      <button id="steps1Hour" ng-class="!memberLockedPages.steps1Hour ? 'button {{buttonClass}}' : 'button button-balanced'" ui-sref="members.steps.steps1Hour" ng-disabled="!memberLockedPages.steps1Hour">1-Hour</button>
         </div>
         
         
      </ion-scroll>
-     
-     <div class="padding" ng-show="showDisclaimer">
-    <small style="text-align:center">Disclaimer1: The viewpoints expressed here are the opinions of Residuals.mobi and do not represent certified financial or investment advise, nor does is guarrantee any success or profit should you follow it.  You are encouraged to seek consultation with a certified professional if you need such services.</small>
-    </div>
-     
     
-      <ion-nav-view name="steps-view" class="scroll">
-       
-       
-       
-      
-       
-     </ion-nav-view>
+      <ion-nav-view name="steps-view" class="scroll"></ion-nav-view>
      
-
-   
-  
-  
- 
+      <div class="padding" ng-show="showDisclaimer">
+        <small style="text-align:center">Disclaimer1: The viewpoints expressed here are the opinions of Residuals.mobi and do not represent certified financial or investment advise, nor does is guarrantee any success or profit should you follow it.  You are encouraged to seek consultation with a certified professional if you need such services.</small>
+      </div>
+    
   </ion-content>
-  
-  
-  
-  
   
 </ion-view>
 

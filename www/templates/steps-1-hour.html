@@ -43,11 +43,11 @@
     </div>
   </div>
         
-        <!-- Last step
+        <!-- Last step 
   <div class="padding" style="height:100px">
-    <button class="button button-balanced icon-right ion-chevron-right" style="float:right" ui-sref="members.steps.1-Hour">Go To The Next Step</button>
+    <button class="{{buttonAnimation}} {{buttonClass}}" ng-class="!memberLockedPages.stepsHour ? 'button {{buttonClass}}' : 'button button-balanced'" style="float:right" ng-click="unlockNextPage('stepsHour')">Go To The Next Step</button>
   </div>
-  -->
+-->
     
     <!--
   <div class="padding">

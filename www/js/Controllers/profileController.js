@@ -82,7 +82,7 @@ myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicP
   
   
   
-   $http.post('https://danhproject-devzubair-4.c9.io/api/profileMember',{
+   $http.post('https://danh-app-devzubair.c9.io/api/profileMember',{
       
       id: localStorage.getItem('currentUserId')
    
@@ -183,7 +183,7 @@ myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicP
                     $scope.userNewPassword=$scope.currentUserData.Password;
                 }
                 
-                 $http.post('https://danhproject-devzubair-4.c9.io/api/editProfile',{
+                 $http.post('https://danh-app-devzubair.c9.io/api/editProfile',{
              
              id:$scope.currentUserData._id,
              Firstname:$scope.currentUserData.Firstname,
@@ -286,7 +286,7 @@ myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicP
         
         
         
-         $http.post('https://danhproject-devzubair-4.c9.io/api/getMember',{
+         $http.post('https://danh-app-devzubair.c9.io/api/getMember',{
              
              userName:$scope.userNewName
              
@@ -311,7 +311,7 @@ myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicP
                  
                  
                  
-                  $http.post('https://danhproject-devzubair-4.c9.io/api/editProfile',{
+                  $http.post('https://danh-app-devzubair.c9.io/api/editProfile',{
              
              id:$scope.currentUserData._id,
              Firstname:$scope.currentUserData.Firstname,

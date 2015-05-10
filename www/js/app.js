@@ -203,9 +203,80 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
         }
       }
     })
+
+      .state('members.boat.intro', {
+      url: '/boat-intro',
+      views: {
+        'boatview': {
+          templateUrl: 'templates/boat-intro.html',
+          controller: 'BoatCtrl'
+          
+        }
+      }
+    })
     
+      .state('members.boat.paddles', {
+      url: '/boat-paddles',
+      views: {
+        'boatview': {
+          templateUrl: 'templates/boat-paddles.html',
+          controller: 'BoatCtrl'
+        }
+      }
+    })
+    
+          .state('members.boat.weight', {
+      url: '/boat-weight',
+      views: {
+        'boatview': {
+          templateUrl: 'templates/boat-weight.html',
+          controller: 'BoatCtrl'
+        }
+      }
+    })
+    
+          .state('members.boat.engines', {
+      url: '/boat-engines',
+      views: {
+        'boatview': {
+          templateUrl: 'templates/boat-engines.html',
+          controller: 'BoatCtrl'
+        }
+      }
+    })    
+    
+          .state('members.boat.engineWeight', {
+      url: '/boat-engineWeight',
+      views: {
+        'boatview': {
+          templateUrl: 'templates/boat-engineWeight.html',
+          controller: 'BoatCtrl'
+        }
+      }
+    })
+    
+          .state('members.boat.fuel', {
+      url: '/boat-fuel',
+      views: {
+        'boatview': {
+          templateUrl: 'templates/boat-fuel.html',
+          controller: 'BoatCtrl'
+        }
+      }
+    })
+    
+          .state('members.boat.charts', {
+      url: '/boat-charts',
+      views: {
+        'boatview': {
+          templateUrl: 'templates/boat-charts.html',
+          controller: 'BoatCtrl'
+        }
+      }
+    })
     
   .state('members.steps', {
+      cache: false,
       url: '/steps',
       views: {
         'tab-mission': {
@@ -215,17 +286,19 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.welcome', {
+  .state('members.steps.stepsWelcome', {
+     cache: false,
       url: '/welcome',
       views: {
         'steps-view': {
-          templateUrl: 'templates/steps-welcome.html'
-        //  controller: 'StepsCtrl'
+          templateUrl: 'templates/steps-welcome.html',
+          controller: 'StepsCtrl'
         }
       }
     })
     
-  .state('members.steps.about', {
+  .state('members.steps.stepsAbout', {
+    cache: false,
       url: '/about',
       views: {
         'steps-view': {
@@ -235,7 +308,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.boat', {
+  .state('members.steps.stepsBoat', {
+    cache: false,
       url: '/boat',
       views: {
         'steps-view': {
@@ -245,7 +319,12 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.time', {
+
+    
+    
+    
+  .state('members.steps.stepsTime', {
+    cache: false,
       url: '/time',
       views: {
         'steps-view': {
@@ -255,7 +334,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
 
-  .state('members.steps.mobilize', {
+  .state('members.steps.stepsMobilize', {
+    cache: false,
       url: '/mobilize',
       views: {
         'steps-view': {
@@ -265,7 +345,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.origins', {
+  .state('members.steps.stepsOrigins', {
+    cache: false,
       url: '/origins',
       views: {
         'steps-view': {
@@ -275,7 +356,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
 
-  .state('members.steps.why', {
+  .state('members.steps.stepsWhy', {
+    cache: false,
       url: '/why',
       views: {
         'steps-view': {
@@ -285,7 +367,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
 
-  .state('members.steps.wrong', {
+  .state('members.steps.stepsWrong', {
+    cache: false,
       url: '/wrong',
       views: {
         'steps-view': {
@@ -295,7 +378,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
 
-  .state('members.steps.owned', {
+  .state('members.steps.stepsOwned', {
+    cache: false,
       url: '/owned',
       views: {
         'steps-view': {
@@ -305,7 +389,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.delay', {
+  .state('members.steps.stepsDelay', {
+    cache: false,
       url: '/delay',
       views: {
         'steps-view': {
@@ -315,7 +400,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.portfoolio', {
+  .state('members.steps.stepsPortfoolio', {
+    cache: false,
       url: '/portfoolio',
       views: {
         'steps-view': {
@@ -325,7 +411,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.health', {
+  .state('members.steps.stepsHealth', {
+    cache: false,
       url: '/health',
       views: {
         'steps-view': {
@@ -335,7 +422,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.planb', {
+  .state('members.steps.stepsPlanB', {
+    cache: false,
       url: '/planb',
       views: {
         'steps-view': {
@@ -345,7 +433,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.active', {
+  .state('members.steps.stepsActive', {
+    cache: false,
       url: '/active',
       views: {
         'steps-view': {
@@ -355,7 +444,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.passive', {
+  .state('members.steps.stepsPassive', {
+    cache: false,
       url: '/passive',
       views: {
         'steps-view': {
@@ -365,7 +455,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.retire', {
+  .state('members.steps.stepsRetire', {
+    cache: false,
       url: '/retire',
       views: {
         'steps-view': {
@@ -375,7 +466,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.residuals', {
+  .state('members.steps.stepsResiduals', {
+    cache: false,
       url: '/residuals',
       views: {
         'steps-view': {
@@ -385,7 +477,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.repeat', {
+  .state('members.steps.stepsRepeat', {
+    cache: false,
       url: '/repeat',
       views: {
         'steps-view': {
@@ -395,7 +488,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.leverage', {
+  .state('members.steps.stepsLeverage', {
+    cache: false,
       url: '/leverage',
       views: {
         'steps-view': {
@@ -405,7 +499,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.techie', {
+  .state('members.steps.stepsTechie', {
+    cache: false,
       url: '/techie',
       views: {
         'steps-view': {
@@ -415,7 +510,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.support', {
+  .state('members.steps.stepsSupport', {
+    cache: false,
       url: '/support',
       views: {
         'steps-view': {
@@ -425,7 +521,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.seeds', {
+  .state('members.steps.stepsSeeds', {
+    cache: false,
       url: '/seeds',
       views: {
         'steps-view': {
@@ -435,7 +532,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.mini-me', {
+  .state('members.steps.stepsMiniMe', {
+    cache: false,
       url: '/mini-me',
       views: {
         'steps-view': {
@@ -445,7 +543,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.system', {
+  .state('members.steps.stepsSystem', {
+    cache: false,
       url: '/system',
       views: {
         'steps-view': {
@@ -455,7 +554,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-  .state('members.steps.1-hour', {
+  .state('members.steps.steps1Hour', {
+    cache: false,
       url: '/1-hour',
       views: {
         'steps-view': {
@@ -466,6 +566,7 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
     })
 
   .state('members.compass', {
+    cache: false,
       url: '/compass',
       views: {
         'tab-mission': {
@@ -477,6 +578,7 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
 
 
   .state('members.engines', {
+    cache: false,
       url: '/engines',
       views: {
         'tab-mission': {
@@ -546,35 +648,8 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
-      .state('members.boat.1', {
-      url: '/boat1',
-      views: {
-        'boatview': {
-          templateUrl: 'templates/boat1.html',
-          /* controller: 'Boat1Ctrl' - did not add yet */
-        }
-      }
-    })
-    
-      .state('members.boat.2', {
-      url: '/boat2',
-      views: {
-        'boatview': {
-          templateUrl: 'templates/boat2.html',
-          /* controller: 'Boat2Ctrl' - did not add yet */
-        }
-      }
-    })
-    
-          .state('members.boat.3', {
-      url: '/boat3',
-      views: {
-        'boatview': {
-          templateUrl: 'templates/boat3.html',
-          /* controller: 'Boat3Ctrl' - did not add yet */
-        }
-      }
-    });
+
+    ;
       
 
   // if none of the above states are matched, use this as the fallback

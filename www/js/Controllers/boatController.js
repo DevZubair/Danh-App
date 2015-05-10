@@ -1,17 +1,23 @@
-myMod.controller('BoatCtrl', function($scope,ionicLoader,$ionicLoading,$http,$ionicPopup) {
+myMod.controller('BoatCtrl', function($scope,ionicLoader,$ionicLoading,$http,$ionicPopup,$ionicScrollDelegate) {
     
+    //to bring function to load at top of each boat calculator on Next button, not working
+    //$scope.scrollTop();
+    
+    //bring in data from local storage to personalize the content
+    $scope.firstName=localStorage.getItem("currentUserFirstName");
+    $scope.mentorName=localStorage.getItem("currentUserMentorName");
     
   // first we assign default values to each data field 
   
- var date=new Date();
+ 
 
  
   $scope.allJobsTotal=0;                    //For description see below, comment 1
     
     var tempJobObject = {
       jobsLabel:'',
-      jobsNumber:0,
-      jobDate:date
+      jobsNumber:0
+     
     };
     
     $scope.jobs=[];
@@ -26,8 +32,8 @@ myMod.controller('BoatCtrl', function($scope,ionicLoader,$ionicLoading,$http,$io
       
    $scope.jobs.push({
       jobsLabel:'',
-      jobsNumber:0,
-      jobDate:date
+      jobsNumber:0
+     
     });
     for(var k=0;k<$scope.jobs.length;k++)
     {
@@ -36,11 +42,22 @@ myMod.controller('BoatCtrl', function($scope,ionicLoader,$ionicLoading,$http,$io
       
     };
     
+    
+    $scope.deleteJob= function(index){
+        
+         $scope.myIndex=$scope.jobs.indexOf(index);
+
+        $scope.jobs.splice($scope.myIndex,1);
+        
+    };
+    
+    
   //need to create this to trigger api to save the Jobs Total to database
   
   $scope.jobsTotal=function(){                   //For description see below, comment 3
     
    
+   var d = new Date();
     console.log($scope.jobs);
 
     
@@ -49,10 +66,11 @@ myMod.controller('BoatCtrl', function($scope,ionicLoader,$ionicLoading,$http,$io
       
       
     // will post data like so:
-        $http.post('https://ionic-test2-danh1975.c9.io/api/jobsTotal',{
+        $http.post('https://danh-app-devzubair.c9.io/api/jobsTotal',{
       
      userID:localStorage.getItem('currentUserId'),
      username: localStorage.getItem('currentUser'),
+     date: d.getUTCDate() +"/"+ (d.getUTCMonth()+1) +"/"+ d.getUTCFullYear(),
      allJobs: $scope.jobs,
      allJobsTotal: $scope.allJobsTotal
      
@@ -61,8 +79,8 @@ myMod.controller('BoatCtrl', function($scope,ionicLoader,$ionicLoading,$http,$io
         }).success(function(data){                   //For description see below, comment 4
           
            var alertPopup = $ionicPopup.alert({
-              title: 'Alert!',
-              template: data
+              title: 'Success!',
+              template: 'Data is saved!'
                   });
                        alertPopup.then(function(res) {
                       // console.log('Thank you');

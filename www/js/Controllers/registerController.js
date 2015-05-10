@@ -10,8 +10,49 @@ myMod.controller('RegisterCtrl',function($scope,$http,$ionicLoading,$ionicPopup,
   $scope.userMentor='';
   $scope.userPicture=[];
   
-  
-  
+    $scope.stepsWelcome= '',
+    $scope.stepsAbout= '',
+    $scope.stepsBoat= '',
+    $scope.stepsTime= '',
+    $scope.stepsMobilize= '',
+    $scope.stepsOrigins= '',
+    $scope.stepsWhy= '',  
+    $scope.stepsWrong= '',
+    $scope.stepsOwned= '',
+    $scope.stepsDelay= '',
+    $scope.stepsPortfoolio= '',
+    $scope.stepsHealth= '',
+    $scope.stepsPlanB= '', 
+    $scope.stepsActive= '',
+    $scope.stepsPassive= '',
+    $scope.stepsRetire= '',
+    $scope.stepsResiduals= '',
+    $scope.stepsRepeat= '',
+    $scope.stepsLeverage= '',  
+    $scope.stepsTechie= '',
+    $scope.stepsSupport= '',
+    $scope.stepsSeeds= '',
+    $scope.stepsMiniMe= '',
+    $scope.stepsSystem= '',
+    $scope.steps1Hour= '', 
+    $scope.boatIntro= '',
+    $scope.boatPaddles= '',
+    $scope.boatEngines= '',
+    $scope.boatEngineWt= '',
+    $scope.boatFuel= '',
+    $scope.boatCharts= '',
+    $scope.compassIntro= '',
+    $scope.compassPaddling= '',
+    $scope.compassFloat= '',
+    $scope.compassEngine= '',
+    $scope.compassCruise= '',
+    $scope.compassNofool= '',
+    $scope.compassFreedom= '',
+    $scope.compassWealth= '',
+    $scope.compassDreams= '',
+    $scope.engines= '',
+    $scope.lake= '',
+    $scope.ocean= '',
   
  
   
@@ -149,7 +190,7 @@ myMod.controller('RegisterCtrl',function($scope,$http,$ionicLoading,$ionicPopup,
          $scope.usernameGreater=false;
     
   
-    $http.post('https://danhproject-devzubair-4.c9.io/api/addMember',{
+    $http.post('https://danh-app-devzubair.c9.io/api/addMember',{
       
      
       firstName: $scope.firstName,
@@ -161,49 +202,49 @@ myMod.controller('RegisterCtrl',function($scope,$http,$ionicLoading,$ionicPopup,
       userMentor: $scope.userMentor,
       profilePicture: $scope.userPicture
       
-      /* add these to for Locked_Pages Schema at registration, schema added to Schema.js but can we just add it to the same addMember API?
-      steps-welcome-unlocked: true,
-      steps-about-unlocked: false,
-      steps-boat-unlocked: false,
-      steps-time-unlocked: false,
-      steps-mobilize-unlocked: false,
-      steps-origins-unlocked: false,
-      steps-why-unlocked: false,  
-      steps-wrong-unlocked: false,
-      steps-owned-unlocked: false,
-      steps-delay-unlocked: false,
-      steps-portfoolio-unlocked: false,
-      steps-health-unlocked: false,
-      steps-planb-unlocked: false,  
-      steps-active-unlocked: false,
-      steps-passive-unlocked: false,
-      steps-retire-unlocked: false,
-      steps-residuals-unlocked: false,
-      steps-repeat-unlocked: false,
-      steps-leverage-unlocked: false,  
-      steps-techie-unlocked: false,
-      steps-support-unlocked: false,
-      steps-seeds-unlocked: false,
-      steps-mini-me-unlocked: false,
-      steps-system-unlocked: false,
-      steps-1-hour-unlocked: false,  
-      */
+
       
     }).success(function(data){
       
       console.log(data);
-      ionicLoader.hide($ionicLoading);
+     
      // alert('Success' + data);    //This will be called if data is successfully sent to Mongo Lab
       
-        var alertPopup = $ionicPopup.alert({
+      
+       // set defaults for  Unlocked Pages database table
+       
+       
+    $http.post('https://danh-app-devzubair.c9.io/api/setUnlocked_Pages',{
+          
+      userEmail:$scope.userEmail,
+      userName:$scope.userName
+  
+      
+      
+    }).success(function(data) {
+        
+        console.log('Success in setting defaults for Unlocked pages API');
+         ionicLoader.hide($ionicLoading);
+         
+          var alertPopup = $ionicPopup.alert({
               title: 'Alert!',
-              template: 'Success' + data
+              template: 'Registration Succesful!  Start Your Journey with the Stepping Stones...'
                   });
                        alertPopup.then(function(res) {
+                            $state.go('login');
                 
-               
-                $state.go('login');
                  });
+        
+         
+    }).error(function(error) {
+        
+        console.log('Error in setting defaults for Unlocked_Pages API');
+        
+    });
+      
+      
+      
+       
             
       
       
@@ -229,4 +270,7 @@ myMod.controller('RegisterCtrl',function($scope,$http,$ionicLoading,$ionicPopup,
     
   };
   
-});
+
+    
+        
+    });

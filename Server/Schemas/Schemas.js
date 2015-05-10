@@ -26,43 +26,62 @@ var jobsSchema=mongoose.Schema({
   
    userId:String,
    username: String,
-   jobs:[Object],
-   
+   date: String,
+   jobs:[],
    jobsTotal:Number
 });
 
 mongoose.model('Jobs',jobsSchema);
 
-//Locked_Pages Schema
+//Unlocked_Pages Schema
 
-var lockedPagesSchema=mongoose.Schema({
+var unlockedPagesSchema=mongoose.Schema({
    
-      stepsWelcomeUnlocked: Boolean,
-      stepsAboutUnlocked: Boolean,
-      stepsBoatUnlocked: Boolean,
-      stepsTimeUnlocked: Boolean,
-      stepsMobilizeUnlocked: Boolean,
-      stepsOriginsUnlocked: Boolean,
-      stepsWhyUnlocked: Boolean,  
-      stepsWrongUnlocked: Boolean,
-      stepsOwnedUnlocked: Boolean,
-      stepsDelayUnlocked: Boolean,
-      stepsPortfoolioUnlocked: Boolean,
-      stepsHealthUnlocked: Boolean,
-      stepsPlanbUnlocked: Boolean,  
-      stepsActiveUnlocked: Boolean,
-      stepsPassiveUnlocked: Boolean,
-      stepsRetireUnlocked: Boolean,
-      stepsResidualsUnlocked: Boolean,
-      stepsRepeatUnlocked: Boolean,
-      stepsLeverageUnlocked: Boolean,  
-      stepsTechieUnlocked: Boolean,
-      stepsSupportUnlocked: Boolean,
-      stepsSeedsUnlocked: Boolean,
-      stepsMiniMeUnlocked: Boolean,
-      stepsSystemUnlocked: Boolean,
-      steps1HourUnlocked: Boolean,  
-   
+      userEmail: String,
+      userName: String,
+      stepsWelcome: Boolean,
+      stepsAbout: Boolean,
+      stepsBoat: Boolean,
+      stepsTime: Boolean,
+      stepsMobilize: Boolean,
+      stepsOrigins: Boolean,
+      stepsWhy: Boolean,  
+      stepsWrong: Boolean,
+      stepsOwned: Boolean,
+      stepsDelay: Boolean,
+      stepsPortfoolio: Boolean,
+      stepsHealth: Boolean,
+      stepsPlanB: Boolean,  
+      stepsActive: Boolean,
+      stepsPassive: Boolean,
+      stepsRetire: Boolean,
+      stepsResiduals: Boolean,
+      stepsRepeat: Boolean,
+      stepsLeverage: Boolean,  
+      stepsTechie: Boolean,
+      stepsSupport: Boolean,
+      stepsSeeds: Boolean,
+      stepsMiniMe: Boolean,
+      stepsSystem: Boolean,
+      steps1Hour: Boolean,  
+      boatIntro: Boolean,
+      boatPaddles: Boolean,
+      boatEngines: Boolean,
+      boatEngineWt: Boolean,
+      boatFuel: Boolean,
+      boatCharts: Boolean,
+      compassIntro: Boolean,
+      compassPaddling: Boolean,
+      compassFloat: Boolean,
+      compassEngine: Boolean,
+      compassCruise: Boolean,
+      compassNoFool: Boolean,
+      compassFreedom: Boolean,
+      compassWealth: Boolean,
+      compassDreams: Boolean,
+      engines: Boolean,
+      lake: Boolean,
+      ocean: Boolean
    
 });
 
@@ -75,7 +94,7 @@ Also boolen value was wrong, it is with capital B not small b.
 */
 
 
-mongoose.model('Locked_Pages',lockedPagesSchema);
+mongoose.model('Unlocked_Pages',unlockedPagesSchema);
 
 
 

@@ -1,0 +1,183 @@
+<!--<ion-view view-title="Your Boat Paddles">
+  <ion-content>-->
+    <input ng-model="firstName" type="hidden" ng-value="firstName" >
+    
+
+    <div class="card">
+      
+      <div class="item item-divider item-balanced">
+        <h2 style="color:white">Your Paddles</h2>
+      </div>
+      
+      <div class="item item-text-wrap">
+        
+    
+    <div class="row">
+      <div class="col">
+        <img src="img/BoatManualPower.png" class="images-right-50"></img> 
+        The easiest way to power your boat is by using the Paddles and rowing it yourself.  So in essence You provide the Boat with <b>{{firstName}} Power</b>.<br><br>
+        So {{firstName}}, you are <b>Rowing Your Boat</b> if you have a job or profession with an <span style="color:green">ACTIVE INCOME</span>.<br><br>
+        In this section, enter all your jobs and estimate how much you earn per month for each to calculate your Paddle Power.
+      </div>
+    </div>
+  </div>
+        
+      <div class="item item-divider item-balanced">
+        <h2 style="color:white">{{firstName}}'s Boat Paddle Power</h2>
+      </div>   
+      
+      <div class="item item-text-wrap">
+        <div class="padding">
+          
+          <!--
+          <div style="border:1px solid blue; padding:10px">
+            Calculators Here
+          </div>
+          -->
+          
+        
+        <!-- +++++++++++++++++++++++++++ Zubair Comment 18th March, 2015 +++++++++++++++++++++++++++++++
+        
+        Below we can see that simply a ng-repeat is used for making the list of lines of jobs and it can be incremented as soon as user hits the
+        add line button and addJobsList() function is called which we have seend in boatController.js
+        
+        Note:
+        Please see that ng-model is taking the data and I have used jobList.jobsLabel and jobList.jobsNumber so we won't be wrong if we say that 
+        it is the pleasure of using Angular that it automatically makes a new object and saves the data by indexes. We just have to write ng-repeat
+        and all the magic is done by Angular itself. Now on each add Line button click, the data of the previous line is saved on index 0 and than new
+        data on index 1 waits for the new data. So we don't really had to write a long code for that.
+        
+        
+        
+        
+        -->
+            
+            <!-- Danh I cannot get these styling for these fields to be shown from the css file so I left it here, although not the best thing to do -->
+            
+            <!-- ++++++++++++++ Zubair Comment 10th May, 2015 +++++++++++++++++
+            
+            Your css is correct but it's not a good practice to use inline-css, its more good to use css classes properly. I have converted your inline
+            css into class jobsClass and it is called on <div> tag below. Secondly please see style.css and check how I have made this class "jobsClass".
+            
+            Tip:
+            
+            There are some methods to use css classes. Few are:
+            1) >
+                This greater than sign ">" is use if we want to call a class on a immediate child of any tag. Here jobsClass is in parent div and 
+                jobsClass > input means that class will be called at first input tag.
+                
+            2) ~
+                This tilda sign "~" is used if we want to call a class on sibling or we can say adjacent one. Here I have called jobsClass as 
+                jobsClass > input ~ input, this means that second input will have this class.
+            -->
+            
+             <div class="list">
+            <div ng-repeat="jobList in jobs track by $index">
+              
+              <div class="row jobsClass">
+              
+              <input class="col col-65" type="text" placeholder="Job {{$index+1}}" id="jobLabel" ng-model="jobList.jobsLabel">
+  
+              <input class="col col-25" type="number" placeholder="0.00" id="jobnumber"  ng-model="jobList.jobsNumber">
+              
+              
+           
+               <div class="col col-10">
+                  <i class="ion-trash-a" ng-click="deleteJob(jobList)"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col">
+                <label class="item item-input">
+                  <button class="button button-full button-balanced" ng-click="addJobsList()">Add Another Job</button>
+                </label>
+              </div>
+             
+            </div>
+            
+            <hr>
+            
+            <div class="row">
+              
+              <div class="col" style="font-weight:bold; font-size:20px; background-color:lightcyan; padding:5px;">Jobs Total</div>
+  
+              <input class="col col-25" type="number" readonly ng-model="allJobsTotal" style="font-weight:bold; font-size:20px; background-color:beige; padding: 0px 5px; text-align:right">
+              
+              
+           
+             
+              <div class="col col-10"></div>
+              
+              </div>
+            
+            </div>
+            
+            <!--
+            <div class="row">
+              <div class="col">
+                <span class="input-label" style="font-size:20px"><b>Total</b></span>
+                
+                
+                <label class="item item-input">
+                  <span class="input-label" style="font-size:20px"><b>Total</b></span>
+                </label> 
+              </div>
+              
+              <div class="col col-25">
+                <label class="item item-input">
+                  <input type="number" readonly ng-model="allJobsTotal" style="font-size:20px; text-align:center">
+                </label>     
+              </div>
+              
+               <div class="col col-10">
+              </div>             
+            </div>  -->
+
+
+
+            
+            <div class="row">
+           
+                <!--<label class="item item-input">
+                  <button class="button button-block button-balanced" ng-click="addJobsList()">Add Job</button>
+                </label> -->
+             
+              
+              <div class="col">
+                <label class="item item-input">
+                  <button class="button button-full button-balanced" ng-click="jobsTotal()">Save All Jobs</button>
+                </label>     
+              </div>
+            </div>
+
+          </div>
+        </div>
+      
+      
+      <div class="item item-divider item-balanced">
+        <h2 style="color:white">Paddles Summary</h2>
+      </div>
+      
+            <div class="item item-text-wrap">
+        <p>
+        Your Boat's Paddle Power is the Active Incomes in your Life.  For most of us, this is the only force powering our Boats.  Although it may work, it is no Engine, and depends totally on us.  </p>
+      
+
+      
+      
+      </div>
+    
+    </div>
+    
+    <div class="padding">
+      <button type="submit"  ng-click="jobsTotal()" class="button button-balanced icon-right ion-chevron-right button-Next">Next: See What's Slowing You Down</button>
+    </div>
+   
+        
+<!--  <ion-content>
+</ion-view>-->
+
+
+

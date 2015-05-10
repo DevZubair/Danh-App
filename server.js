@@ -61,8 +61,21 @@ app.post('/api/getMember',Api.getMember);
 app.post('/api/jobsTotal',Api.jobsTotal);
 */
 app.post('/api/jobsTotal',Api.jobsTotal);
+app.post('/api/getJob',Api.getJob);
 
 // Used the same code of yours and called the Api with same name 'jobsTotal' in Api.js
+
+app.post('/api/setUnlocked_Pages',Api.UnlockedPagesDefault);
+app.post('/api/getMemberUnlockedPages',Api.getMemberUnlockedPages);
+app.post('/api/updateUnlockedPages',Api.updateUnlockedPages);
+app.post('/api/resetMemberUnlockedPages',Api.resetMemberUnlockedPages);
+
+/*  +++++++++++++++++++++++++++ Zubair Comment 15th April, 2015 +++++++++++++++++++++++++++++++
+
+Above I have added the post request API path so that when we call this Api.UnlockedPagesDefault, it will be running than. If you dont write here
+in server than the post request or any other http request won't work because Server needs the url to load this request.
+*/
+
 
 
 
