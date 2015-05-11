@@ -1,4 +1,4 @@
-myMod.controller('BoatCtrl', function($scope,ionicLoader,$ionicLoading,$http,$ionicPopup,$ionicScrollDelegate) {
+myMod.controller('BoatCtrl', function($scope,ionicLoader,$ionicLoading,$http,$ionicPopup,$ionicScrollDelegate, $state) {
     
     //to bring function to load at top of each boat calculator on Next button, not working
     //$scope.scrollTop();
@@ -80,13 +80,15 @@ myMod.controller('BoatCtrl', function($scope,ionicLoader,$ionicLoading,$http,$io
           
            var alertPopup = $ionicPopup.alert({
               title: 'Success!',
-              template: 'Data is saved!'
+              template: 'Jobs Recorded!'
                   });
                        alertPopup.then(function(res) {
                       // console.log('Thank you');
                  });
                  
                  ionicLoader.hide($ionicLoading);
+                 localStorage.setItem('allJobsTotal',data.allJobsTotal);
+                 $state.go('members.boat.weight');
           
         }).error(function(error){
           ionicLoader.hide($ionicLoading);
