@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'mainModule', 'starter.services','appServices','ngCordova'])
+angular.module('starter', ['ionic', 'mainModule', 'starter.services','appServices','ngCordova','chatServices'])
 
 .run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
@@ -113,11 +113,31 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
+  .state('members.test', {
+      url: '/test',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/test.html',
+           controller: 'ProfileCtrl' 
+        }
+      }
+    })
+    
   .state('members.support', {
       url: '/suppoort',
       views: {
         'tab-account': {
           templateUrl: 'templates/support.html',
+          controller: 'SupportCtrl' 
+        }
+      }
+    })
+    
+  .state('members.feedback', {
+      url: '/feedback',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/feedback.html',
           controller: 'SupportCtrl' 
         }
       }

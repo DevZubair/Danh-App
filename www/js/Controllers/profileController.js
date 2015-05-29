@@ -199,7 +199,7 @@ myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicP
              ionicLoader.hide($ionicLoading);
             
              var alertPopup = $ionicPopup.alert({
-              title: 'Danh App Alert!',
+              title: '',
               template: "Data Updated!"
                   });
                        alertPopup.then(function(res) {
@@ -297,7 +297,7 @@ myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicP
                  //alert('Username is not available, please select another name');
                   ionicLoader.hide($ionicLoading);
                    var alertPopup = $ionicPopup.alert({
-              title: 'Danh App Alert!',
+              title: 'Alert!',
               template: "Username is not available, please select another name!"
                   });
                        alertPopup.then(function(res) {

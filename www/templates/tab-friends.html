@@ -1,23 +1,63 @@
+<script type="text/ng-template" id="tree.html">
+    <div class="upline top submembers node {{data.main.Class}}" ng-repeat="data in data.main.node track by $index" ng-include="'tree.html'"> </div>
+          
+    <div class="sub-node upline top">
+                                  <div class="wrap-node clearfix active">
+                                      <span rel="tooltip" class="realtion" title="" >{{data.main.Realtion}}</span>
+                                      <a class="image-text" rel="tooltip" href="#" id="{{data.main.MemberId}}" role="button" title="Click here to visit {{data.main.FirstName}}">
+                                          <img class="member-image" alt="" src={{data.main.ImageName}} />
+                                          <span style="margin: 5px;" class="member-info">   {{data.main.FirstName + data.main.LastName }} <br/> {{data.main.MemberTitle}} ({{data.main.Count}}) </span> 
+                                      </a>
+                                      <a style="width: auto;" href="#" rel="tooltip"  class="indicator" ng-click="getSubDownlineMembers(data.main.MemberId, data.main.IgnoreId,$event)" title="Click here to see {{data.main.FirstName}}'s Group ">
+                                          <img ng-show="data.main.Count > 0" class="arrow-green {{data.main.ImgClass}}" src={{data.main.src}}>
+                                          <span class="count"></span>
+                                      </a>
+                                  </div>
+                              </div>
+</script>
+
+
+
 <ion-view view-title="My Tree">
-  <ion-content style="background:white">
-    <!--
-    <ion-list class="list-inset">
-      <ion-item class="item-avatar" ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.id}}">
-        <img ng-src="{{friend.face}}">
-        <h2>{{friend.name}}</h2>
-      </ion-item>
-    </ion-list>
-    -->
+   <!-- <ion-content style="background:white">
     
-    <div class="padding" style="min-height:100px">
-      
-      <div>
-        <img src="../img/tree-sample.png" style="width:100%; max-width:500px; text-align:center"></img>
-      </div>
-      <div style="background-color:white; text-align:center;">
-        <span><h2>Coming...</h2></span>
-      </div>
-      
-    </div>
-  </ion-content>
+        <ion-list class="list-inset">
+        
+                
+
+            <!-- <ion-item class="item-avatar" ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.id}}">
+                     <img ng-src="{{friend.face}}">
+                     <h2>{{friend.name}}</h2>
+                 </ion-item>-- >
+        </ion-list>
+</ion-content>-->
+    <div class="tree-root row" style="max-height: 100%;max-width: 480px;overflow: auto; position:absolute; bottom: 0; margin-bottom: 60px; padding-top: 100px;">
+                <div class="row-child">
+                    <div class="tree ng-hide" ng-show="tree">
+                        <div class="node upline top submembers {{uplineMembers.main.Class}}">
+                            <div class="upline top submembers node {{data.main.Class}}" ng-repeat="data in uplineMembers.main.node track by $index" ng-include="'tree.html'">
+                            </div>
+                                <div class="sub-node upline top first-sub-node" id="bottom">
+                                <div class="wrap-node clearfix active">
+                                    <span rel="tooltip" class="realtion" title="" >{{uplineMembers.main.Realtion}}</span>
+                                    <a class="image-text" rel="tooltip" href="#" id="{{uplineMembers.main.MemberId}}" role="button" title="Click here to visit {{uplineMembers.main.FirstName}}">
+                                        <img class="member-image" alt="" src={{uplineMembers.main.ImageName}} />
+                                        <span style="margin: 5px;" class="member-info">   {{uplineMembers.main.FirstName + uplineMembers.main.LastName }} <br/> {{uplineMembers.main.MemberTitle}} ({{uplineMembers.main.Count}}) </span> 
+                                    </a>
+                                    <a style="width: auto;" href="#" rel="tooltip"  class="indicator" ng-click="getSubDownlineMembers(uplineMembers.main.MemberId, uplineMembers.main.IgnoreId,$event)"  title="Click here to see {{uplineMembers.main.FirstName}}'s Group ">
+                                        <img class="arrow-green" src={{uplineMembers.main.src}}>
+                                        <span class="count"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            </div>
 </ion-view>
+
+
+
+
+

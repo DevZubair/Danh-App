@@ -28,7 +28,9 @@ var jobsSchema=mongoose.Schema({
    username: String,
    date: String,
    jobs:[],
-   jobsTotal:Number
+   jobsTotal:Number,
+   latestUpdate: Date
+   
 });
 
 mongoose.model('Jobs',jobsSchema);

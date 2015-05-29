@@ -63,7 +63,7 @@
             
             There are some methods to use css classes. Few are:
             1) >
-                This greater than sign ">" is use if we want to call a class on a immediate child of any tag. Here jobsClass is in parent div and 
+                This greater than sign ">" is use if we want to call a class on a child of any tag. Here jobsClass is in parent div and 
                 jobsClass > input means that class will be called at first input tag.
                 
             2) ~
@@ -76,14 +76,16 @@
               
               <div class="row jobsClass">
               
-              <input class="col col-65" type="text" placeholder="Job {{$index+1}}" id="jobLabel" ng-model="jobList.jobsLabel">
+              <input class="col col-50" type="text" placeholder="Job {{$index+1}}" id="jobLabel" ng-model="jobList.jobsLabel">
   
-              <span style="font-size: 20px; font-weight:body">$</span><input class="col col-25" type="number" placeholder="$ 0.00" id="jobnumber"  ng-model="jobList.jobsNumber">
+        <span class="col col-10">$</span>
+        
+              <input class="col" type="number" placeholder="0.00" id="jobnumber" ng-model="jobList.jobsNumber"
+              ng-blur="addTotalJobs()">
               
-              
-           
+      
                <div class="col col-10">
-                  <i class="ion-trash-a" ng-click="deleteJob(jobList)"></i>
+                  <i style="font-size:22px;" class="ion-trash-a" ng-click="deleteJob(jobList)"></i>
                 </div>
               </div>
             </div>
@@ -99,16 +101,17 @@
             
             <hr>
             
-            <div class="row">
+            <div class="row jobsTotal">
               
-              <div class="col" style="font-weight:bold; font-size:20px; background-color:lightcyan; padding:5px;">Jobs Total</div>
+              <div class="col col-33">Jobs Total</div>
   
-              <span style="font-size:20px; font-weight:bold">$</span><input class="col col-25" type="number" readonly ng-model="allJobsTotal" style="font-weight:bold; font-size:20px; background-color:beige; padding: 0px 5px; text-align:right">
+              
+              <input class="col" type="text" readonly ng-model="allJobsTotal">
               
               
            
              
-              <div class="col col-10"></div>
+              
               
               </div>
             
@@ -161,24 +164,37 @@
       </div>
       
             <div class="item item-text-wrap">
-        <img src="img/boat-paddling.png" class="images-right-50"></img> 
-        Your <b>Paddle Power</b> is the <b>Active Income</b> in your Life.<br><br>
         
-        <span class="red-bold">Your Current Active Income = {{allJobsTotal|currency}}</span><br><br>
+        <div class="row">
+          <div class="column">
+            
+            <img src="img/boat-paddling.png" class="images-right-50"></img> 
+            
+            Your <b>Paddle Power</b> is the <b>Active Income</b> in your Life.<br><br>
+            
+            <span class="red-bold">Your Current Active Income = {{allJobsTotal|currency}}</span><br><br>
+            
+            For most of us, this is the only force powering our Boat.  While it gets the job done, we have to realize that whether your boat moves or not depends totally on US.  That is our TIME, our ENERGY, and our BODY.<br><br>
+            
+            And if you try to become rich using only Active Incomes, you're severely limited because:
+            <ul>
+              <li>You only have 24 hours in a day</li>
+              <li>You only have so much energy</li>
+              <li>Your body can only work so hard</li>
+            </ul><br>
+          </div>
+        </div>
         
-        For most of us, this is the only force powering our Boat.  While it gets the job done, we have to realize that whether your boat moves or not depends totally on US.  That is our TIME, our ENERGY, and our BODY.<br><br>
-        
-        And if you try to become rich using only Active Incomes, you're severely limited because:
-        <ul>
-          <li>You only have 24 hours in a day</li>
-          <li>You only have so much energy</li>
-          <li>Your body can only work so much</li>
-        </ul><br>
-        
-        In other words, our body is NOT SCALABLE to do more and more work, so we will reach some limit... then we get tired then turn around and wonder where did all those years go!!<br><br>
-        
-        All the while, there are a slew of other things that Life will be throwing at you to SLOW YOU DOWN!. We'll take a look at that next.
-       
+        <div class="row">
+          <div class="col">
+            <img src="img/knockedDown.jpg" class="images-left-50"></img> 
+            <span class="subtitle" style="text-align:center">"Our body is <b>NOT SCALABLE</b> to do more and more work, so we will reach some limit."</span><br><br>
+            
+            Then <b>ONE DAY</b>we will get <b>TOO TIRED</b>, then turn around and wonder where did all those years go!! That's because <span class="red-bold">ACTIVE INCOMES continually suck up all your TIME and ENERGY!</span><br><br>
+            
+            And it gets worse!  Every day, there are a slew of other things that Life is throwing at you to SLOW YOU DOWN!. We'll take a look at that next.
+          </div>
+        </div>
        
 
       
@@ -188,7 +204,7 @@
     </div>
     
     <div class="padding">
-      <button type="submit"  ng-click="jobsTotal()" class="button button-balanced icon-right ion-chevron-right button-Next">Next: See What's Slowing You Down</button>
+      <button type="submit"  ng-click="goToState('members.boat.weight')" class="button button-balanced icon-right ion-chevron-right button-Next">Next: See What's Slowing You Down</button>
     </div>
    
         

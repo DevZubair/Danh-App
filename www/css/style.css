@@ -64,6 +64,12 @@
      
 
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 
 ion-content {
 	background-color: #E2E5FC;
@@ -237,4 +243,199 @@ li {
   padding:0 5px;
   text-align:right
   
+}
+.jobsTotal > div{
+  
+  font-weight:bold; 
+  font-size:15px;
+  background-color:lightcyan;
+  padding:5px;
+  
+}
+.jobsTotal > span {
+  font-size:20px;
+  font-weight:bold;
+}
+.jobsTotal > input {
+  font-weight:bold; 
+  font-size:20px;
+  background-color:beige;
+  padding: 0px 5px;
+  text-align:right;
+}
+
+
+.scroll {
+    height: 500%;
+}
+
+/* tree css  */
+.wrap-node {
+    overflow: hidden;
+    color: #fff;
+    background-color: #4FFF5A;
+    border: 2px solid #4FFF5A;
+    border-top-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+}
+
+.wrap-node {
+    box-shadow: 7px 7px 5px grey;
+}
+
+.row-child .realtion {
+    font-size: 17px;
+    font-weight: bold;
+    color: #000;
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.node .arrow-green {
+    max-width: 42px;
+    margin-top: 5px;
+}
+
+.node.submembers {
+    margin-left: 50px;
+}
+
+.node.upline.top.submembers > .node:first-child, .node.upline.top.submembers > .node:first-child > .sub-node:first-child, .row-child .node.upline, .row-child .node.first .sub-node, .row-child .node.first {
+    background: none;
+}
+
+.active > .sub-node {
+    background: none !important;
+}
+
+.row-child .node .sub-node {
+    width: 400px;
+    padding-left: 42px;
+}
+
+.active .node .sub-node {
+    background: url("../img/temp.png");
+    background-repeat: repeat-y;
+    background-position: 25px 0;
+}
+
+.row-child .node {
+    background: url('../img/temp.png');
+    background-repeat: repeat-y;
+    background-position: 35px;
+}
+
+.row-child .node {
+    width: 100% !important;
+    padding-right: 50px;
+}
+
+
+
+.sub-node {
+    position: relative;
+    padding-top: 7px;
+}
+
+.image-text {
+    float: left;
+    color: #000;
+    width: 58%;
+    text-decoration: none;
+}
+
+.node .member-image {
+    border: 1px solid black;
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+.node img {
+    margin-bottom: 0px !important;
+}
+
+.node .member-info {
+    display: block;
+    text-align: center;
+    margin: 5px;
+}
+
+.active > .submembers .sub-node.upline.top:before {
+    content: url("../img/h-stem.png");
+    display: block;
+    position: absolute;
+    top: 48px;
+    z-index: 10;
+    left: 25px;
+}
+
+.sub-node.upline:before, .sub-node.top:before {
+    display: block;
+    position: absolute;
+    top: 35px;
+    z-index: 10;
+    left: 25px;
+    content: url("../img/upline-stem.png");
+}
+
+.node.submembers.active:after {
+    content: url('../img/temp.png');
+    position: absolute;
+    left: 75px;
+    bottom: 47px;
+}
+
+.node.submembers.active {
+    position: relative;
+}
+
+
+
+.hidden {
+    display: none;
+}
+
+.subdown-members .wrap-node {
+    border: 2px solid #F1EDED !important;
+    background: #fff !important;
+    -webkit-box-shadow: 7px 7px 5px grey;
+    -moz-box-shadow: 7px 7px 5px grey;
+    box-shadow: 7px 7px 5px grey;
+    background: #F1EDED !important;
+}
+
+.subdown-members > .sub-node .wrap-node {
+    border: 2px solid #F1EDED !important;
+    background: #fff !important;
+    -webkit-box-shadow: 7px 7px 5px grey;
+    -moz-box-shadow: 7px 7px 5px grey;
+    box-shadow: 7px 7px 5px grey;
+    background: #F1EDED !important;
+}
+
+
+.hide-sub-members .submembers {
+    display: none;
+}
+
+.first-sub-node:before {
+    content: none !important;
+}
+
+.hide-sub-members .sub-node {
+    background: none !important;
+}
+
+.row-child .node.active {
+    background: url('../img/temp.png');
+    background-repeat: repeat-y;
+    background-position: 25px;
+}
+
+.tree > .node.active {
+    background: none !important;
 }

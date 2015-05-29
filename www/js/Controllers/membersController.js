@@ -1,9 +1,15 @@
 myMod.controller('MembersCtrl', function($scope, $http,$state,$rootScope,$ionicSideMenuDelegate) {
+   
+   
     
    $scope.toggleRight = function() {
         $ionicSideMenuDelegate.toggleRight();
       };
     
+    //prevent swipe action from opening the side menu, only applied to friends page for some reason - Danh
+    $ionicSideMenuDelegate.canDragContent(false);
+    
+ 
     
     /* ++++++++++++++++++++++ Zubair Comment 9th March, 2015 ++++++++++++++++++++++++++++
     

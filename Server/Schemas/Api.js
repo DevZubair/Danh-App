@@ -297,7 +297,8 @@ module.exports.jobsTotal=function(req,res){
                   username: memberJobs.username,
                   date: memberJobs.date,
                   jobs: memberJobs.allJobs,
-                  jobsTotal: memberJobs.allJobsTotal
+                  jobsTotal: memberJobs.allJobsTotal,
+                  latestUpdate: memberJobs.latestUpdate
                   
                   
                     
@@ -551,7 +552,7 @@ module.exports.getJob=function(req,res)
 {
 
      
-         Jobs.findOne({date:req.body.date},function(error,data){  
+         Jobs.find({date:req.body.date, userId: req.body.userId},function(error,data){  
         
         if(data){
             res.send(data);
@@ -562,5 +563,90 @@ module.exports.getJob=function(req,res)
         }
         
     });
+    
+};
+
+module.exports.updateJob=function(req,res)
+
+{
+    
+            Jobs.update({_id:req.body.id},
+            
+            {
+                
+            'jobsTotal': req.body.newJobsTotal,
+            'jobs': req.body.newJobs,
+            'latestUpdate' : req.body.latestUpdate
+            
+            
+        },false,true);
+    
+   
+   
+
+         Jobs.findOne({_id:req.body.id},function(err,data){  
+        
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.send(data);
+            
+            
+        }
+        
+    });
+    
+};
+
+/*  ++++++++++++++++++++ Zubair Comment 21/May/2015 ++++++++++++++++++++++++++++++
+
+  Below is the API to get the latest updated or added data 
+  from Mongo. The API is simply a POST request which will bring
+  the data. 
+  
+  Explanation:
+  
+  1) .limit(1) is a mongo function which restricts the response
+  data to be only single entry or single object.
+  
+  2) sort() simply sorts the data with whatever condition 
+  we send into the parameter.
+  
+  3) We are passing "$natural:-1" for the sorting so basically
+  this method makes the array sorted with respect to time
+  stamp which we have send in the latestUpdate data field.
+  
+  4) Note here that we are not telling the API to sort the data 
+  with respect to the "latestUpdate" field but automatically
+  $natural:-1 figures out the time stamp and sort the data.
+  
+  5) .exec is just to pass the function with error and data
+  same like we do in other APIs but there we dont have to use the 
+  exec but we directly pass the function. Here we needed the
+  .exec for the function. 
+  
+
+
+
+*/
+
+module.exports.getLatestJob=function(req,res){
+    
+  Jobs.find({userId : req.body.userId}).limit(1).sort({$natural:-1})
+        .exec(function(err,data){
+    if(data){
+        
+            res.send(data);
+        }
+        
+    else
+    
+        {
+            res.send(err);
+            
+        }
+});
+    
     
 };

@@ -19,6 +19,7 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script type="text/javascript" src="js/Modules/ng-cordova.js"></script>
     <script src="lib/jr-crop.js"></script>
+    <script type="text/javascript" src="lib/socket.io-1.2.0.js"></script>
     
 
     <!-- cordova script (this will be a 404 during development) -->
@@ -27,6 +28,7 @@
     <!--Services -->
      <script src="js/Services/services.js"></script>
      <script src="js/Services/appServices.js"></script>
+     <script src="js/Services/chatServices.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
@@ -77,7 +79,7 @@
             </ion-side-menu-content>
         
             <ion-side-menu side="right">
-                    
+                <!--<ion-pane ion-side-menu-content drag-content="false">  did not work to prevent swipe from bringing in sidemenu-->   
                 <ion-content ng-controller="sideBarController">
                     <ul class="list">
                         <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
@@ -93,9 +95,13 @@
                             <i class="icon ion-alert-circled"></i>
                             Support</a>
                             
-                        <a href="#" class="item item-icon-left" menu-close>
+                        <a ui-sref="members.feedback" class="item item-icon-left" menu-close>
                             <i class="icon ion-chatbubble-working"></i>
                             Feedback</a>
+                            
+                        <a ui-sref="members.test" class="item item-icon-left" menu-close>
+                            <i class="icon ion-person"></i>
+                            Test features</a>
                         
                         <a class="item item-icon-left" menu-close ng-click="resetLockPages()">
                             <i class="icon ion-arrow-return-left"></i>
@@ -107,6 +113,7 @@
                        
                     </ul>
                 </ion-content>
+                <!-- </ion-pane>-->
             </ion-side-menu>
         </ion-side-menus>
 

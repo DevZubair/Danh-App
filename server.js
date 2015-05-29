@@ -2,12 +2,10 @@
 
 var express=require('./Server/node_modules/express');
 var app=express();
+var http  = require('http').Server(app);
+var io    = require('./Server/node_modules/socket.io')(http);
 var mongoose=require('./Server/node_modules/mongoose');
 mongoose.connect('mongodb://danhnguyen:danh014me@ds029307.mongolab.com:29307/danh01');
-
-
-
-
 
 var morgan=require('./Server/node_modules/morgan');
 
@@ -50,20 +48,18 @@ app.use(bodyParser());
 
 var port = process.env.PORT || 8000;        // set our port
 
-
+//List of all our API's if we add/change, we have to reset the server for it to take effect
 
 app.post('/api/addMember',Api.addMember);
 app.post('/api/loginMember',Api.loginMember);
 app.post('/api/profileMember',Api.profileMember);
 app.post('/api/editProfile',Api.editProfile);
 app.post('/api/getMember',Api.getMember);
-/* add api for Boat2 page
-app.post('/api/jobsTotal',Api.jobsTotal);
-*/
+
 app.post('/api/jobsTotal',Api.jobsTotal);
 app.post('/api/getJob',Api.getJob);
-
-// Used the same code of yours and called the Api with same name 'jobsTotal' in Api.js
+app.post('/api/updateJob',Api.updateJob);
+app.post('/api/getLatestJob',Api.getLatestJob);
 
 app.post('/api/setUnlocked_Pages',Api.UnlockedPagesDefault);
 app.post('/api/getMemberUnlockedPages',Api.getMemberUnlockedPages);
@@ -82,6 +78,73 @@ in server than the post request or any other http request won't work because Ser
  app.get('*', function(req, res) {
         res.sendfile(__dirname+'./www/index.html'); // load the single view file (angular will handle the page changes on the front-end)
     });
+    
+    
+    
+    
+    
+    // usernames which are currently connected to the chat
+var usernames = {};
+
+io.on('connection', function (socket) {
+  var addedUser = false;
+
+  socket.on('new message', function (data) {
+    socket.broadcast.emit('new message', {
+      username: socket.username,
+      content: data
+    });
+  });
+
+  socket.on('add user', function (username) {
+    // we store the username in the socket session for this client
+    socket.username = username;
+    // add the client's username to the global list
+    usernames[username] = username;
+    addedUser = true;
+    // echo globally (all clients) that a person has connected
+    socket.broadcast.emit('user joined', {
+      username: socket.username
+    });
+  });
+
+  // when the client emits 'typing', we broadcast it to others
+  socket.on('typing', function () {
+    socket.broadcast.emit('typing', {
+      username: socket.username
+    });
+  });
+
+  // when the client emits 'stop typing', we broadcast it to others
+  socket.on('stop typing', function () {
+    socket.broadcast.emit('stop typing', {
+      username: socket.username
+    });
+  });
+
+  socket.on('disconnect', function () {
+    // remove the username from global usernames list
+    if (addedUser) {
+      delete usernames[socket.username];
+
+      // echo globally that this client has left
+      socket.broadcast.emit('user left', {
+        username: socket.username
+      });
+    }
+  });
+
+});
+
+
+  app.get('/api/usernames', function(req, res){
+  res.send(usernames);
+});
+    
+    
+    
+    
+    
     
 
 app.listen(port);
@@ -108,7 +171,7 @@ console.log('server is listening on 8000');
     Note :
             I have called those APIs here. e.g : app.post(...., Api.addMember) 
     
-
-
+Danh: thanks for the explanations, I will keep it here for future references 
+https://docs.c9.io/v1.0/docs/writing-a-nodejs-app
 
 */

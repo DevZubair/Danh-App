@@ -1,0 +1,57 @@
+<ion-view view-title="Feedback">
+  <ion-content>
+    <div class="intro">
+      <H3>Let us know what your think!  What should we improve? </H3>
+    </div>
+    
+ <div class="card">
+      
+      
+      <div class="item item-text-wrap">
+        <form>
+
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">First Name</span>
+              <input type="text" placeholder="firstName" ng-model="currentUserData.Firstname" readonly>
+            </label>
+            
+            <label class="item item-input">
+              <span class="input-label">Last Name</span>
+              <input type="text" placeholder="lastName"  ng-model="currentUserData.Lastname" readonly>
+            </label>
+            
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input type="text" placeholder="userEmail"  ng-model="currentUserData.Email" readonly>
+              <i type="icon" style="icon-right ion-locked"></i>
+            </label>
+            
+            <label class="item item-input">
+              <span class="input-label">Username</span>
+              <input type="text" placeholder="userName"  ng-model="$parent.userNewName" readonly>
+            </label>
+            
+            
+            <label class="item item-input">
+              
+              <span class="input-label">Feedback</span>
+              <textarea rows="5" placeholder="enter your comments here."></textarea>
+            </label>
+            
+            <label class="item">
+              <button class="button button-block icon-left ion-edit button-balanced" type="submit" >Send Feedback</button>
+            </label>
+          </div>
+        </form>
+        
+        
+        
+      </div>
+    </div>
+    
+    
+
+    
+  </ion-content>
+</ion-view>
