@@ -21,8 +21,8 @@ var memberSchema=mongoose.Schema({
 mongoose.model('Members',memberSchema);
 
 
-// Jobs Schema
-var jobsSchema=mongoose.Schema({
+// Boat Paddles Jobs Schema
+var paddlesJobsSchema=mongoose.Schema({
   
    userId:String,
    username: String,
@@ -33,7 +33,22 @@ var jobsSchema=mongoose.Schema({
    
 });
 
-mongoose.model('Jobs',jobsSchema);
+mongoose.model('Paddles_Boats',paddlesJobsSchema);
+
+// Boat Weight  Schema
+var weightJobsSchema=mongoose.Schema({
+  
+   userId:String,
+   username: String,
+   date: String,
+   weights:[],
+   weightsTotal:Number,
+   latestUpdate: Date
+   
+});
+
+mongoose.model('Weight_Boats',weightJobsSchema);
+
 
 //Unlocked_Pages Schema
 

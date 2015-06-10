@@ -1,6 +1,7 @@
 var mongoose=require('mongoose');
 var Members=mongoose.model('Members');
-var Jobs=mongoose.model('Jobs');
+var Paddles_Boats=mongoose.model('Paddles_Boats');
+var Weight_Boats=mongoose.model('Weight_Boats');
 var Unlocked_Pages =mongoose.model('Unlocked_Pages'); 
 
 
@@ -266,58 +267,6 @@ module.exports.getMember=function(req,res)
 };
 
 
-/* +++++++++++++++++++++++++++ Zubair Comment 18th March, 2015 +++++++++++++++++++++++++++++++++
-
- Here we have used the Api for jobsTotal in which simple data is being taken and saved into the schema, same as we are doing above in members registration 
- and login APIs. 
- 
- Note:
- One thing really made me stressed and it was saving an Array of objects into Mongo. It was an easy task well but I haven't done that before so it took me 
- a while to figure it out that how it actually works. So please note that if we want to save an array of objects like we want to have a jobs array 
- with multiple objects of different jobs list containing label, number, data. So in schema.js we have made a simple array conatining objects of String 
- type. And same array is made in the boatController so that it is easy for us to just send a similar array with similar objects name and with same
- data type to Mongo. 
- Like here in schema we have Array 'jobs' and from controller we are sending Array 'allJobs'. Both the arrays are same so it is very easy now to send
- an array of objects. Happy Coding!
-
-
-
-
-*/
-
-
-module.exports.jobsTotal=function(req,res){
-    
-      var memberJobs=req.body; 
-  
-               
-                var member_jobs=new Jobs({
-                  
-                  userId: memberJobs.userID,
-                  username: memberJobs.username,
-                  date: memberJobs.date,
-                  jobs: memberJobs.allJobs,
-                  jobsTotal: memberJobs.allJobsTotal,
-                  latestUpdate: memberJobs.latestUpdate
-                  
-                  
-                    
-                });
-                
-                member_jobs.save(function(error){
-                    if(error){
-                        res.send(error);
-
-                    }
-                    else
-
-                        res.send('Jobs Added Successfully');
-                });
-
-         
-    
-    
-};
 
 /* API for setting the default UnLocked Pages at beginning: */
 
@@ -546,13 +495,66 @@ module.exports.resetMemberUnlockedPages=function(req,res){
    
 };
 
+/* +++++++++++++++++++++++++++ Zubair Comment 18th March, 2015 +++++++++++++++++++++++++++++++++
+
+ Here we have used the Api for jobsTotal in which simple data is being taken and saved into the schema, same as we are doing above in members registration 
+ and login APIs. 
+ 
+ Note:
+ One thing really made me stressed and it was saving an Array of objects into Mongo. It was an easy task well but I haven't done that before so it took me 
+ a while to figure it out that how it actually works. So please note that if we want to save an array of objects like we want to have a jobs array 
+ with multiple objects of different jobs list containing label, number, data. So in schema.js we have made a simple array conatining objects of String 
+ type. And same array is made in the boatController so that it is easy for us to just send a similar array with similar objects name and with same
+ data type to Mongo. 
+ Like here in schema we have Array 'jobs' and from controller we are sending Array 'allJobs'. Both the arrays are same so it is very easy now to send
+ an array of objects. Happy Coding!
+
+
+
+
+*/
+
+
+module.exports.jobsTotal=function(req,res){
+    
+      var memberJobs=req.body; 
+  
+               
+                var member_jobs=new Paddles_Boats({
+                  
+                  userId: memberJobs.userID,
+                  username: memberJobs.username,
+                  date: memberJobs.date,
+                  jobs: memberJobs.allJobs,
+                  jobsTotal: memberJobs.allJobsTotal,
+                  latestUpdate: memberJobs.latestUpdate
+                  
+                  
+                    
+                });
+                
+                member_jobs.save(function(error){
+                    if(error){
+                        res.send(error);
+
+                    }
+                    else
+
+                        res.send('Jobs Added Successfully');
+                });
+
+         
+    
+    
+};
+
 
 module.exports.getJob=function(req,res)
 
 {
 
      
-         Jobs.find({date:req.body.date, userId: req.body.userId},function(error,data){  
+         Paddles_Boats.find({date:req.body.date, userId: req.body.userId},function(error,data){  
         
         if(data){
             res.send(data);
@@ -570,7 +572,7 @@ module.exports.updateJob=function(req,res)
 
 {
     
-            Jobs.update({_id:req.body.id},
+            Paddles_Boats.update({_id:req.body.id},
             
             {
                 
@@ -584,7 +586,7 @@ module.exports.updateJob=function(req,res)
    
    
 
-         Jobs.findOne({_id:req.body.id},function(err,data){  
+         Paddles_Boats.findOne({_id:req.body.id},function(err,data){  
         
         if(err){
             res.send(err);
@@ -633,7 +635,116 @@ module.exports.updateJob=function(req,res)
 
 module.exports.getLatestJob=function(req,res){
     
-  Jobs.find({userId : req.body.userId}).limit(1).sort({$natural:-1})
+  Paddles_Boats.find({userId : req.body.userId}).limit(1).sort({$natural:-1})
+        .exec(function(err,data){
+    if(data){
+        
+            res.send(data);
+        }
+        
+    else
+    
+        {
+            res.send(err);
+            
+        }
+});
+    
+    
+};
+
+
+module.exports.weightsTotal=function(req,res){
+    
+      var weights=req.body; 
+  
+               
+                var member_weights=new Weight_Boats({
+                  
+                  userId: weights.userID,
+                  username: weights.username,
+                  date: weights.date,
+                  weights: weights.allWeights,
+                  weightsTotal: weights.allWeightsTotal,
+                  latestUpdate: weights.latestUpdate
+                  
+                  
+                    
+                });
+                
+                member_weights.save(function(error){
+                    if(error){
+                        res.send(error);
+
+                    }
+                    else
+
+                        res.send('Weights Added Successfully');
+                });
+
+         
+    
+    
+};
+
+
+module.exports.getWeights=function(req,res)
+
+{
+
+     
+         Weight_Boats.find({date:req.body.date, userId: req.body.userId},function(error,data){  
+        
+        if(data){
+            res.send(data);
+        }
+        else{
+            res.send(error);
+            
+        }
+        
+    });
+    
+};
+
+module.exports.updateWeights=function(req,res)
+
+{
+    
+            Weight_Boats.update({_id:req.body.id},
+            
+            {
+                
+            'weightsTotal': req.body.newWeightsTotal,
+            'weights': req.body.newWeights,
+            'latestUpdate' : req.body.latestUpdate
+            
+            
+        },false,true);
+    
+   
+   
+
+         Weight_Boats.findOne({_id:req.body.id},function(err,data){  
+        
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.send(data);
+            
+            
+        }
+        
+    });
+    
+};
+
+
+
+module.exports.getLatestWeight=function(req,res){
+    
+  Weight_Boats.find({userId : req.body.userId}).limit(1).sort({$natural:-1})
         .exec(function(err,data){
     if(data){
         

@@ -240,7 +240,7 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       views: {
         'boatview': {
           templateUrl: 'templates/boat-paddles.html',
-          controller: 'BoatCtrl'
+          controller: 'BoatPaddlesCtrl'
         }
       }
     })
@@ -250,7 +250,7 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       views: {
         'boatview': {
           templateUrl: 'templates/boat-weight.html',
-          controller: 'BoatCtrl'
+          controller: 'BoatWeightCtrl'
         }
       }
     })

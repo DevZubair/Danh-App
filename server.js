@@ -3,7 +3,6 @@
 var express=require('./Server/node_modules/express');
 var app=express();
 var http  = require('http').Server(app);
-var io    = require('./Server/node_modules/socket.io')(http);
 var mongoose=require('./Server/node_modules/mongoose');
 mongoose.connect('mongodb://danhnguyen:danh014me@ds029307.mongolab.com:29307/danh01');
 
@@ -13,6 +12,13 @@ var bodyParser=require('./Server/node_modules/body-parser');
 var methodOverride=require('./Server/node_modules/method-override');
 var Schemas=require('./Server/Schemas/Schemas.js');
 var Api=require('./Server/Schemas/Api.js');
+
+
+/*var nodemailer = require("./Mail/node_modules/nodemailer");
+var mailexpress = require("./Mail/node_modules/express");
+var mailapp = mailexpress();
+*/
+
 
 app.use(function(req, res, next) {
 
@@ -56,10 +62,19 @@ app.post('/api/profileMember',Api.profileMember);
 app.post('/api/editProfile',Api.editProfile);
 app.post('/api/getMember',Api.getMember);
 
+//For Boat's paddles Page
 app.post('/api/jobsTotal',Api.jobsTotal);
 app.post('/api/getJob',Api.getJob);
 app.post('/api/updateJob',Api.updateJob);
 app.post('/api/getLatestJob',Api.getLatestJob);
+
+//For Boat's Weight Page
+app.post('/api/weightsTotal',Api.weightsTotal);
+app.post('/api/getWeights',Api.getWeights);
+app.post('/api/updateWeights',Api.updateWeights);
+app.post('/api/getLatestWeight',Api.getLatestWeight);
+
+
 
 app.post('/api/setUnlocked_Pages',Api.UnlockedPagesDefault);
 app.post('/api/getMemberUnlockedPages',Api.getMemberUnlockedPages);
@@ -83,65 +98,7 @@ in server than the post request or any other http request won't work because Ser
     
     
     
-    // usernames which are currently connected to the chat
-var usernames = {};
-
-io.on('connection', function (socket) {
-  var addedUser = false;
-
-  socket.on('new message', function (data) {
-    socket.broadcast.emit('new message', {
-      username: socket.username,
-      content: data
-    });
-  });
-
-  socket.on('add user', function (username) {
-    // we store the username in the socket session for this client
-    socket.username = username;
-    // add the client's username to the global list
-    usernames[username] = username;
-    addedUser = true;
-    // echo globally (all clients) that a person has connected
-    socket.broadcast.emit('user joined', {
-      username: socket.username
-    });
-  });
-
-  // when the client emits 'typing', we broadcast it to others
-  socket.on('typing', function () {
-    socket.broadcast.emit('typing', {
-      username: socket.username
-    });
-  });
-
-  // when the client emits 'stop typing', we broadcast it to others
-  socket.on('stop typing', function () {
-    socket.broadcast.emit('stop typing', {
-      username: socket.username
-    });
-  });
-
-  socket.on('disconnect', function () {
-    // remove the username from global usernames list
-    if (addedUser) {
-      delete usernames[socket.username];
-
-      // echo globally that this client has left
-      socket.broadcast.emit('user left', {
-        username: socket.username
-      });
-    }
-  });
-
-});
-
-
-  app.get('/api/usernames', function(req, res){
-  res.send(usernames);
-});
-    
-    
+   
     
     
     

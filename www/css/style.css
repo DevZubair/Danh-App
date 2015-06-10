@@ -187,10 +187,10 @@ label.item.valid-lr {
   color:brown;
 }
 
-.scroll{
+/*.scroll{
   height:200%;
 }
-
+*/
 ul {
   margin-top:10px;
   list-style-type: disc;
@@ -268,7 +268,6 @@ li {
 .scroll {
     height: 500%;
 }
-
 /* tree css  */
 .wrap-node {
     overflow: hidden;
@@ -280,7 +279,7 @@ li {
 }
 
 .wrap-node {
-    box-shadow: 7px 7px 5px grey;
+    /*box-shadow: 7px 7px 5px grey;*/
 }
 
 .row-child .realtion {
@@ -319,7 +318,7 @@ li {
 .active .node .sub-node {
     background: url("../img/temp.png");
     background-repeat: repeat-y;
-    background-position: 25px 0;
+    background-position: 23px 0;
 }
 
 .row-child .node {
@@ -364,29 +363,40 @@ li {
     margin: 5px;
 }
 
+.sub-node.upline:before, .sub-node.top:before {
+    content: url("../img/h-stem.png");
+    display: block;
+    position: absolute;
+    top: 45px;
+    z-index: 10;
+    left: 22px;
+}
+
+.node.upline-member:after {
+    content: url('../img/temp.png');
+    position: absolute;
+    left: 72px;
+    bottom: 49px;
+}
+
+.node.upline-member {
+    position: relative;
+}
+
 .active > .submembers .sub-node.upline.top:before {
     content: url("../img/h-stem.png");
     display: block;
     position: absolute;
     top: 48px;
     z-index: 10;
-    left: 25px;
-}
-
-.sub-node.upline:before, .sub-node.top:before {
-    display: block;
-    position: absolute;
-    top: 35px;
-    z-index: 10;
-    left: 25px;
-    content: url("../img/upline-stem.png");
+    left: 23px;
 }
 
 .node.submembers.active:after {
     content: url('../img/temp.png');
     position: absolute;
-    left: 75px;
-    bottom: 47px;
+    left: 73px;
+    bottom: 49px;
 }
 
 .node.submembers.active {
@@ -402,18 +412,18 @@ li {
 .subdown-members .wrap-node {
     border: 2px solid #F1EDED !important;
     background: #fff !important;
-    -webkit-box-shadow: 7px 7px 5px grey;
+    /*-webkit-box-shadow: 7px 7px 5px grey;
     -moz-box-shadow: 7px 7px 5px grey;
-    box-shadow: 7px 7px 5px grey;
+    box-shadow: 7px 7px 5px grey;*/
     background: #F1EDED !important;
 }
 
 .subdown-members > .sub-node .wrap-node {
     border: 2px solid #F1EDED !important;
     background: #fff !important;
-    -webkit-box-shadow: 7px 7px 5px grey;
+    /*-webkit-box-shadow: 7px 7px 5px grey;
     -moz-box-shadow: 7px 7px 5px grey;
-    box-shadow: 7px 7px 5px grey;
+    box-shadow: 7px 7px 5px grey;*/
     background: #F1EDED !important;
 }
 
@@ -426,16 +436,38 @@ li {
     content: none !important;
 }
 
-.hide-sub-members .sub-node {
+/*.hide-sub-members .sub-node {
     background: none !important;
-}
+}*/
 
 .row-child .node.active {
     background: url('../img/temp.png');
     background-repeat: repeat-y;
-    background-position: 25px;
+    background-position: 23px;
 }
 
 .tree > .node.active {
     background: none !important;
 }
+
+.node .sub-node {
+    /*-webkit-box-shadow: 7px 18px 6px #fff;
+    -moz-box-shadow: 7px 18px 6px #fff;
+    box-shadow: 7px 18px 6px #fff;*/
+}
+
+.my-tree {
+    background-color: #D7EFFA;
+}
+
+    .my-tree .tree-trunk {
+        position: absolute;
+        margin-left: -125px;
+        margin-bottom: 75px !important;
+    }
+
+    .my-tree .scroll {
+        height: 120%;
+    }
+
+

@@ -1,10 +1,9 @@
-myMod.controller('FriendsCtrl', function ($scope, Friends, $http, $location, $anchorScroll, $ionicLoading, ionicLoader) {
+myMod.controller('FriendsCtrl', function ($scope, Friends, $http, $location, $anchorScroll, $ionicLoading, ionicLoader, $timeout) {
 
     //$scope.apiUrl = 'http://localhost:3030/handlers/GetTreeMembers.ashx';
-     $scope.apiUrl = '//test.quietincomes.net/handlers/GetTreeMembers.ashx';
+     $scope.apiUrl = 'http://test.quietincomes.net/handlers/GetTreeMembers.ashx';
     $scope.memberId = 10000005;
-    
-    
+
     // hide the tree  
     $scope.tree = false;
 
@@ -31,6 +30,9 @@ myMod.controller('FriendsCtrl', function ($scope, Friends, $http, $location, $an
             $scope.tree = true;
 
             ionicLoader.hide($ionicLoading);
+
+            var treeScroll = document.getElementById('treeScroll');
+            treeScroll.getElementsByClassName("scroll")[0].style.webkitTransform = 'translate3d(0px, 0px, 0px) scale(0.5)';
         });
     };
 
@@ -64,7 +66,7 @@ myMod.controller('FriendsCtrl', function ($scope, Friends, $http, $location, $an
 
     // get and set subdownLineMembers by member id 
     $scope.getSubDownlineMembers = function (memberId, ignoreId, $event) {
-
+        
         // get img element on which click
         $scope.arrowImg = angular.element($event.target);
 
@@ -97,9 +99,9 @@ myMod.controller('FriendsCtrl', function ($scope, Friends, $http, $location, $an
 
                 //  add subdownline members in node  
                 $scope.addSubDownLineMembers($scope.uplineMembers, memberId);
-
+                
                 $scope.arrowImg.addClass('loaded');
-
+                
                 ionicLoader.hide($ionicLoading);
             });
         }
@@ -157,6 +159,7 @@ myMod.controller('FriendsCtrl', function ($scope, Friends, $http, $location, $an
         $element.parent().parent().parent().parent().toggleClass('hide-sub-members');
 
         $element.toggleClass("hide-sub-members");
+
     };
 
     // add downlineMembers where relation is Me
@@ -297,6 +300,7 @@ myMod.controller('FriendsCtrl', function ($scope, Friends, $http, $location, $an
         }
 
     };
+    
 
 });
 
