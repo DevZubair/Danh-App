@@ -127,3 +127,44 @@ mongoose.model('Unlocked_Pages',unlockedPagesSchema);
 
 
 */
+
+/*   +++++++++++++++++++++++++ Zubair Comment 11/June/2015 +++++++++++++++++++++++++
+
+
+Following Schema is for the Chat App. Chat App is basically based on 'Rooms'.
+Each member chats with another member having a unique room. There will be a room 
+ID,room Name, room users, room Icon, room messages history.
+
+*/
+
+var ChatRoomSchema=mongoose.Schema({
+
+
+   
+   
+   RoomID: String,
+   RoomIcon: String,
+   RoomName: String,
+   
+   Users: [
+         {
+           id: String,
+           status: String,
+           readMessages: Number
+          }
+           
+           ],
+           
+   ChatMessages: [{
+       
+       message: String,
+       author: String,
+       readBy: [String]
+   }]
+    
+
+    
+});
+
+
+mongoose.model('ChatRoom',ChatRoomSchema);

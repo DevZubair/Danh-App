@@ -237,6 +237,7 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
     
       .state('members.boat.paddles', {
       url: '/boat-paddles',
+      cache:false,
       views: {
         'boatview': {
           templateUrl: 'templates/boat-paddles.html',
@@ -247,6 +248,7 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
     
           .state('members.boat.weight', {
       url: '/boat-weight',
+      cache:false,
       views: {
         'boatview': {
           templateUrl: 'templates/boat-weight.html',
