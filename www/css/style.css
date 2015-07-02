@@ -266,7 +266,7 @@ li {
 
 
 .scroll {
-    height: 500%;
+  /*  height: 500%;*/
 }
 /* tree css  */
 .wrap-node {
@@ -468,6 +468,14 @@ li {
 
     .my-tree .scroll {
         height: 120%;
-    }
+        }
 
+.bar.bar-dark{
+  background-color:rgba(0,0,0,0.1) !important;
+}
+
+.infinite-scroll {
+  bottom:220px;
+  
+}
 

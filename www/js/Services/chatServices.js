@@ -1,3 +1,5 @@
+/* Author: Muhammad Zubair, 14/June/2015  */
+
 angular.module('chatServices', [])
 
 .factory('Chat', function($rootScope,$http,$ionicScrollDelegate,Notification) {

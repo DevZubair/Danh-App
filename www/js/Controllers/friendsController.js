@@ -10,7 +10,7 @@ myMod.controller('FriendsCtrl', function ($scope, Friends, $http, $location, $an
     // create for set attr img src
     $scope.arrowImg = null;
 
-    ionicLoader.show($ionicLoading);
+ //   ionicLoader.show($ionicLoading);
 
     $scope.getAllMembers = function () {
 

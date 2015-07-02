@@ -1,0 +1,46 @@
+<ion-view title="{{chatFriend}}">
+    <ion-nav-buttons side="right">
+      <i ui-sref="members.inboxRoom" style="font-size:30px; margin-right:10px" class="ion-chatboxes"></i>
+    </ion-nav-buttons>
+    <ion-content>
+        
+        
+        
+     <section ng-repeat="msgs in allChatMessages track by $index">
+   
+   <span class="row" ng-if="allChatMessages[$index-1].date!=msgs.date">
+        <p class="col"></p>
+        <p class="col-50" style="text-align:center;border-radius:14px;color:grey; font-family:cursive;font-weight:bold; background-color:rgba(192, 184, 184, 0.2);max-width:30%">
+        {{msgs.date}}
+        </p>
+        <p class="col"></p>
+   </span>
+   
+    <div ng-if="msgs.author==chatFriend" class="from-them">
+      <p>{{msgs.message}}</p>
+    </div>
+    
+    <div ng-if="msgs.author==currentUser" class="from-me">
+      <p>{{msgs.message}}</p>
+    </div>
+   
+  <div class="clear"></div>
+  
+  
+  
+  </section>
+        
+        
+        
+  
+        
+    </ion-content>
+  
+<ion-footer-bar align-title="left" class="bar-dark row">
+ 
+ <input class="col" type="text" ng-model="newMessage.message" name="" style="border-radius:08px;"/>
+  <span class="col-10"></span>
+  <i class="col-10 ion-paper-airplane" style="font-size:30px;color:green;" ng-click="sendMessage()"></i>
+</ion-footer-bar>
+
+</ion-view>

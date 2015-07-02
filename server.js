@@ -1,17 +1,20 @@
 // We need to reset server for any changes in server.js to take effect
 
-var express=require('./Server/node_modules/express');
-var app=express();
-var http  = require('http').Server(app);
-var mongoose=require('./Server/node_modules/mongoose');
+var express = require('./Server/node_modules/express');
+var app = express();
+var http = require('http').Server(app);
+var io = require('./Server/node_modules/socket.io')(http);
+
+
+var mongoose = require('./Server/node_modules/mongoose');
 mongoose.connect('mongodb://danhnguyen:danh014me@ds029307.mongolab.com:29307/danh01');
 
-var morgan=require('./Server/node_modules/morgan');
+var morgan = require('./Server/node_modules/morgan');
 
-var bodyParser=require('./Server/node_modules/body-parser');
-var methodOverride=require('./Server/node_modules/method-override');
-var Schemas=require('./Server/Schemas/Schemas.js');
-var Api=require('./Server/Schemas/Api.js');
+var bodyParser = require('./Server/node_modules/body-parser');
+var methodOverride = require('./Server/node_modules/method-override');
+var Schemas = require('./Server/Schemas/Schemas.js');
+var Api = require('./Server/Schemas/Api.js');
 
 
 /*var nodemailer = require("./Mail/node_modules/nodemailer");
@@ -22,12 +25,12 @@ var mailapp = mailexpress();
 
 app.use(function(req, res, next) {
 
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("'Access-Control-Allow-Methods',['OPTIONS', 'GET', 'POST', 'DELETE']");
-    res.header("'Access-Control-Allow-Headers','Content-Type'");
+ res.header("Access-Control-Allow-Origin", "*");
+ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+ res.header("'Access-Control-Allow-Methods',['OPTIONS', 'GET', 'POST', 'DELETE']");
+ res.header("'Access-Control-Allow-Headers','Content-Type'");
 
-    next();
+ next();
 });
 app.use(express.static(__dirname + '/www'));
 
@@ -52,34 +55,43 @@ app.use(bodyParser());
 
 */
 
-var port = process.env.PORT || 8000;        // set our port
+var port = process.env.PORT || 8000; // set our port
 
 //List of all our API's if we add/change, we have to reset the server for it to take effect
 
-app.post('/api/addMember',Api.addMember);
-app.post('/api/loginMember',Api.loginMember);
-app.post('/api/profileMember',Api.profileMember);
-app.post('/api/editProfile',Api.editProfile);
-app.post('/api/getMember',Api.getMember);
+app.post('/api/addMember', Api.addMember);
+app.post('/api/loginMember', Api.loginMember);
+app.post('/api/profileMember', Api.profileMember);
+app.post('/api/editProfile', Api.editProfile);
+app.post('/api/getMember', Api.getMember);
+app.get('/api/getAllMembers', Api.getAllMembers);
 
 //For Boat's paddles Page
-app.post('/api/jobsTotal',Api.jobsTotal);
-app.post('/api/getJob',Api.getJob);
-app.post('/api/updateJob',Api.updateJob);
-app.post('/api/getLatestJob',Api.getLatestJob);
+app.post('/api/jobsTotal', Api.jobsTotal);
+app.post('/api/getJob', Api.getJob);
+app.post('/api/updateJob', Api.updateJob);
+app.post('/api/getLatestJob', Api.getLatestJob);
 
 //For Boat's Weight Page
-app.post('/api/weightsTotal',Api.weightsTotal);
-app.post('/api/getWeights',Api.getWeights);
-app.post('/api/updateWeights',Api.updateWeights);
-app.post('/api/getLatestWeight',Api.getLatestWeight);
+app.post('/api/weightsTotal', Api.weightsTotal);
+app.post('/api/getWeights', Api.getWeights);
+app.post('/api/updateWeights', Api.updateWeights);
+app.post('/api/getLatestWeight', Api.getLatestWeight);
 
 
+//For Locked/Unlocked Pages
+app.post('/api/setUnlocked_Pages', Api.UnlockedPagesDefault);
+app.post('/api/getMemberUnlockedPages', Api.getMemberUnlockedPages);
+app.post('/api/updateUnlockedPages', Api.updateUnlockedPages);
+app.post('/api/resetMemberUnlockedPages', Api.resetMemberUnlockedPages);
 
-app.post('/api/setUnlocked_Pages',Api.UnlockedPagesDefault);
-app.post('/api/getMemberUnlockedPages',Api.getMemberUnlockedPages);
-app.post('/api/updateUnlockedPages',Api.updateUnlockedPages);
-app.post('/api/resetMemberUnlockedPages',Api.resetMemberUnlockedPages);
+
+//For Socket.io Chat Page
+app.post('/api/roomCreate', Api.roomCreate);
+app.post('/api/chatCreate', Api.chatCreate);
+app.post('/api/getChatMessages', Api.getChatMessages);
+app.post('/api/updateChatMessages', Api.updateChatMessages);
+
 
 /*  +++++++++++++++++++++++++++ Zubair Comment 15th April, 2015 +++++++++++++++++++++++++++++++
 
@@ -90,22 +102,59 @@ in server than the post request or any other http request won't work because Ser
 
 
 
- app.get('*', function(req, res) {
-        res.sendfile(__dirname+'./www/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });
-    
-    
-    
-    
-    
-   
-    
-    
-    
-    
+app.get('*', function(req, res) {
+ res.sendfile(__dirname + './www/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
 
-app.listen(port);
-console.log('server is listening on 8000');
+
+//Socket.io for connection
+
+io.on('connection', function(socket) {
+
+
+ //When User Connected
+ console.log('USER connected');
+
+ //When User Disconnects
+ socket.on('disconnect', function() {
+  console.log('user disconnected');
+ });
+
+ socket.on('join', function(data) {
+  socket.join(data.socketRoomID); // We are using room of socket io
+  console.log(data.socketRoomID);
+
+ });
+
+ //When User sents Message
+ socket.on('initiateChat', function(msg, socketRoomID, sendingUser) {
+  console.log('message: ' + msg);
+  console.log('Socket:' + socket.id);
+
+  io.sockets.in(socketRoomID).emit('initiateChat', msg, sendingUser);
+ });
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+http.listen(port, function() {
+ console.log('server is listening on 8000');
+});
+
+
+
+
+
 
 
 /*  +++++++++++++++++++++++ Zubair Comment 5th March, 2015 ++++++++++++++++++++++++++++++ 

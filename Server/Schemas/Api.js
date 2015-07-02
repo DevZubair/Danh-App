@@ -3,6 +3,8 @@ var Members=mongoose.model('Members');
 var Paddles_Boats=mongoose.model('Paddles_Boats');
 var Weight_Boats=mongoose.model('Weight_Boats');
 var Unlocked_Pages =mongoose.model('Unlocked_Pages'); 
+var Chat_Rooms=mongoose.model('Chat_Rooms');
+var Chat_Messages=mongoose.model('Chat_Messages');
 
 
 // Above we have required the model or we can say schema of mongodb which we have added in Schema.js
@@ -36,6 +38,7 @@ module.exports.addMember=function(req,res){
                     Firstname:memberData.firstName,
                     Lastname:memberData.lastName,
                     Username:memberData.userName, 
+                    Gender:memberData.gender,
                     Password:memberData.userPassword,
                     Email:memberData.userEmail,
                     Aboutme:memberData.userAboutme,
@@ -220,6 +223,7 @@ module.exports.editProfile=function(req,res){
         'Firstname':req.body.Firstname,
         'Lastname':req.body.Lastname,
         'Username':req.body.Username,
+        'Gender':req.body.Gender,
         'Password':req.body.Password,
         'Email':req.body.Email,
         'Aboutme':req.body.Aboutme,
@@ -237,6 +241,24 @@ module.exports.editProfile=function(req,res){
         {
             res.send(data);
         }
+    });
+    
+    
+};
+
+module.exports.getAllMembers=function(req,res){
+    
+  
+     Members.find(function(error,data){  
+        
+        if(data){
+            res.send(data);
+        }
+        else{
+            res.send(error);
+            
+        }
+        
     });
     
     
@@ -758,6 +780,115 @@ module.exports.getLatestWeight=function(req,res){
             
         }
 });
+    
+    
+};
+
+module.exports.roomCreate=function(req,res){
+    
+    var roomData=req.body;
+    
+    var chatRoom_data=new Chat_Rooms({
+                  
+                  RoomID : roomData.RoomID,
+                  RoomIcon: roomData.RoomIcon,
+                  RoomName: roomData.RoomName,
+                  Users: roomData.Users
+                  
+                    
+               
+                    
+                });
+                chatRoom_data.save(function(error){
+                    if(error){
+                        res.send(error);
+
+                    }
+                    else
+
+                        res.send('Room Created Successfully');
+                });
+
+  
+  
+    
+    
+};
+
+
+module.exports.chatCreate=function(req,res){
+    
+  
+  var chatData=req.body;
+  
+  var chatMessages_data=new Chat_Messages({
+      
+      RoomID: chatData.RoomID,
+      RoomName: chatData.RoomName,
+      ChatMessages: chatData.ChatMessages
+      
+      
+  });
+  
+   chatMessages_data.save(function(error){
+                    if(error){
+                        res.send(error);
+
+                    }
+                    else
+
+                        res.send('Chat Messages Created Successfully');
+                });
+
+  
+    
+    
+};
+
+module.exports.updateChatMessages=function(req,res)
+
+{
+    
+            Chat_Messages.update({RoomID:req.body.RoomID},
+            
+            {
+            
+              'ChatMessages': req.body.ChatMessages  
+            
+        },false,true);
+    
+   
+   
+
+         Chat_Messages.findOne({RoomID:req.body.RoomID},function(err,data){  
+        
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.send(data);
+            
+            
+        }
+        
+    });
+    
+};
+
+module.exports.getChatMessages=function(req,res){
+    
+  Chat_Messages.findOne({RoomID:req.body.RoomID},function(err,data){  
+        
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.send(data);
+            
+            
+        }
+    
+  });
     
     
 };

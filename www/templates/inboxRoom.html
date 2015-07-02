@@ -1,0 +1,33 @@
+<ion-view title="Inbox">
+    <ion-nav-buttons side="right">
+      <i ui-sref="members.membersRoom" style="font-size:30px; margin-right:10px" class="ion-plus-round"></i>
+    </ion-nav-buttons>
+     
+    <ion-content>
+        
+        
+        
+     <ion-list>
+         
+  <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="members in appMembers" type="item-text-wrap">
+        <img ng-if="members.ProfilePicture[0]" ng-src="{{members.ProfilePicture[0].src}}">
+        <img ng-if="!members.ProfilePicture[0]" ng-src="img/icon-{{members.Gender}}.png">
+
+        <h2>{{members.Username}}</h2>
+        <p>{{members.Email}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+      
+      </ion-item>
+     
+    </ion-list>
+        
+        
+        
+        
+        
+    </ion-content>
+    
+    
+    
+</ion-view>

@@ -1,6 +1,8 @@
 // We need to reset server for any changes is Schema.js to take effect
 
 var mongoose=require('mongoose');
+var uniqueValidator = require('../node_modules/mongoose-unique-validator');
+
 
 //Member Schema
 var memberSchema=mongoose.Schema({
@@ -8,6 +10,7 @@ var memberSchema=mongoose.Schema({
     Firstname:String,
     Lastname:String,
     Username:String,
+    Gender:String,
     Password:String,
     Email:String,
     Aboutme:String,
@@ -137,34 +140,38 @@ ID,room Name, room users, room Icon, room messages history.
 
 */
 
-var ChatRoomSchema=mongoose.Schema({
+var Chat_Rooms=mongoose.Schema({
 
 
    
    
-   RoomID: String,
+   RoomID: {type: String, required: true, unique: true},
    RoomIcon: String,
    RoomName: String,
    
-   Users: [
-         {
-           id: String,
-           status: String,
-           readMessages: Number
-          }
-           
-           ],
-           
-   ChatMessages: [{
-       
-       message: String,
-       author: String,
-       readBy: [String]
-   }]
+   Users: []
     
 
     
 });
 
 
-mongoose.model('ChatRoom',ChatRoomSchema);
+mongoose.model('Chat_Rooms',Chat_Rooms);
+
+Chat_Rooms.plugin(uniqueValidator, { message: 'Error, RoomID match found' });
+
+
+var Chat_Messages=mongoose.Schema({
+    
+   RoomID: {type: String, required: true, unique: true},
+   RoomName: String,
+   ChatMessages: [] 
+    
+
+
+
+    
+});
+
+mongoose.model('Chat_Messages',Chat_Messages);
+Chat_Messages.plugin(uniqueValidator, { message: 'Error, RoomID match found for chat' });

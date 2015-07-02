@@ -4,6 +4,7 @@ myMod.controller('RegisterCtrl',function($scope,$http,$ionicLoading,$ionicPopup,
   $scope.firstName='';
   $scope.lastName='';
   $scope.userName='';
+  $scope.gender='';
   $scope.userPassword='';
   $scope.userEmail='';
   $scope.userAboutme='';
@@ -196,6 +197,7 @@ myMod.controller('RegisterCtrl',function($scope,$http,$ionicLoading,$ionicPopup,
       firstName: $scope.firstName,
       lastName: $scope.lastName,
       userName: $scope.userName,
+      gender: $scope.gender,
       userPassword: $scope.userPassword,
       userEmail: $scope.userEmail,
       userAboutme: $scope.userAboutme,

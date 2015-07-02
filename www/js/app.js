@@ -670,6 +670,41 @@ angular.module('starter', ['ionic', 'mainModule', 'starter.services','appService
       }
     })
     
+     .state('members.inboxRoom', {
+      url: '/inboxList',
+      cache:false,
+      views: {
+        'tab-inboxList': {
+          templateUrl: 'templates/inboxRoom.html',
+          controller: 'InboxRoomCtrl' 
+        }
+      }
+    })
+    
+     .state('members.membersRoom', {
+      url: '/membersList',
+      cache:false,
+      views: {
+        'tab-inboxList': {
+          templateUrl: 'templates/membersRoom.html',
+          controller: 'MembersListCtrl' 
+        }
+      }
+    })
+    
+      
+     .state('members.chatRoom', {
+      url: '/chatRoom',
+      cache:false,
+      views: {
+        'tab-inboxList': {
+          templateUrl: 'templates/chatRoom.html',
+          controller: 'ChatsCtrl' 
+        }
+      }
+    })
+    
+    
 
     ;
       

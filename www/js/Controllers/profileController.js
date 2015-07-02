@@ -1,4 +1,4 @@
-myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicPopup,$ionicLoading,ionicLoader,$cordovaCamera,$ionicModal,$ionicSlideBoxDelegate,$jrCrop) {
+myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicPopup,$ionicLoading,ionicLoader,$cordovaCamera,$ionicModal,$ionicSlideBoxDelegate) {
    
  
  
@@ -189,6 +189,7 @@ myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicP
              Firstname:$scope.currentUserData.Firstname,
              Lastname:$scope.currentUserData.Lastname,
              Username:$scope.userNewName,
+             Gender: $scope.currentUserData.Gender,
              Password:$scope.userNewPassword,
              Email:$scope.currentUserData.Email,
              Aboutme:$scope.currentUserData.Aboutme,
@@ -317,6 +318,7 @@ myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicP
              Firstname:$scope.currentUserData.Firstname,
              Lastname:$scope.currentUserData.Lastname,
              Username:$scope.userNewName,
+             Gender: $scope.currentUserData.Gender,
              Password:$scope.userNewPassword,
              Email:$scope.currentUserData.Email,
              Aboutme:$scope.currentUserData.Aboutme,
@@ -416,25 +418,6 @@ myMod.controller('ProfileCtrl', function($scope, $http,$state,$rootScope,$ionicP
     
 
 
-   /* $jrCrop.crop({
-    url: $scope.aImages[0].src,
-    width: 200,
-    height: 200
-}).then(function(url) {
-    // success!
-    
-  //  var dataURL = canvas.toDataURL("image/png");
-    alert(url); 
-    
-}, function() {
-    // User canceled or couldn't load image.
-    alert('image crop error');
-});
-    
-   */
- 
-    
-    
     
     
 });

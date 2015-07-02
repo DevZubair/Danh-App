@@ -1,0 +1,33 @@
+<ion-view title="Members">
+    <ion-nav-buttons side="right">
+      <i ui-sref="members.inboxRoom" style="font-size:33px; margin-right:8px; amrgin-top:5px;" class="ion-chatboxes"></i>
+    </ion-nav-buttons>
+    <ion-content>
+        
+        
+        
+     <ion-list>
+         
+      <ion-item ng-click="createRoom(members)" class="item-remove-animate item-avatar item-icon-right" ng-repeat="members in appMembers" type="item-text-wrap">
+        
+        <img ng-if="members.ProfilePicture[0]" ng-src="{{members.ProfilePicture[0].src}}">
+        <img ng-if="!members.ProfilePicture[0]" ng-src="img/icon-{{members.Gender}}.png">
+
+        <h2>{{members.Username}}</h2>
+        <p>{{members.Email}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+      
+      </ion-item>
+     
+    </ion-list>
+        
+        
+        
+        
+        
+    </ion-content>
+    
+    
+    
+</ion-view>
