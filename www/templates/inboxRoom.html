@@ -10,11 +10,11 @@
      <ion-list>
          
   <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="members in appMembers" type="item-text-wrap">
-        <img ng-if="members.ProfilePicture[0]" ng-src="{{members.ProfilePicture[0].src}}">
-        <img ng-if="!members.ProfilePicture[0]" ng-src="img/icon-{{members.Gender}}.png">
+        
+        <img ng-src="{{members.RoomIcon}}">
 
-        <h2>{{members.Username}}</h2>
-        <p>{{members.Email}}</p>
+        <h2>{{members.RoomName}}</h2>
+        <p>{{members.ChatMessages[members.ChatMessages.length-1].message}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
       

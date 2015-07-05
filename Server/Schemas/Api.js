@@ -892,3 +892,24 @@ module.exports.getChatMessages=function(req,res){
     
     
 };
+
+module.exports.getInbox=function(req,res){
+    
+  Chat_Messages.find(function(err,data){
+      
+      if(err){
+            res.send(err);
+        }
+        else{
+            res.send(data);
+            
+            
+        }
+      
+  });
+  
+  
+    
+    
+    
+};

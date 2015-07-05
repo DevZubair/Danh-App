@@ -80,11 +80,14 @@ myMod.controller('ChatsCtrl', function($scope, Chats, $http, ionicLoader, $ionic
  $scope.sendMessage = function() {
 
 
-  socket.emit('initiateChat', $scope.newMessage.message, $scope.socketRoomID, $scope.currentUser);
+  socket.emit('initiateChat', $scope.newMessage.message, $scope.currentUser, $scope.socketRoomID);
   $scope.newMessage.message = '';
 
+ };
 
-  socket.on('initiateChat', function(msg, sendingUser) {
+  socket.on('initiateChat', function(msg, sendingUser, socketRoomID) {
+
+console.log('Counter');
 
 
    if (msg != '') {
@@ -106,11 +109,11 @@ myMod.controller('ChatsCtrl', function($scope, Chats, $http, ionicLoader, $ionic
     };
 
     $scope.allChatMessages.push($scope.chatMessages);
-  //  $scope.$apply($scope.allChatMessages);
+    $scope.$apply($scope.allChatMessages);
 
-   /* $http.post('https://danh-app-devzubair.c9.io/api/updateChatMessages', {
+    $http.post('https://danh-app-devzubair.c9.io/api/updateChatMessages', {
 
-     RoomID: $scope.socketRoomID,
+     RoomID: socketRoomID,
      ChatMessages: $scope.allChatMessages
 
     }).success(function(data) {
@@ -123,7 +126,7 @@ myMod.controller('ChatsCtrl', function($scope, Chats, $http, ionicLoader, $ionic
 
      console.log('Chats Update Error!');
 
-    });*/
+    });
 
 
 
@@ -140,7 +143,6 @@ myMod.controller('ChatsCtrl', function($scope, Chats, $http, ionicLoader, $ionic
 
 
 
- };
 
 
 });

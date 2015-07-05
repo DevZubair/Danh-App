@@ -88,6 +88,7 @@ app.post('/api/resetMemberUnlockedPages', Api.resetMemberUnlockedPages);
 
 //For Socket.io Chat Page
 app.post('/api/roomCreate', Api.roomCreate);
+app.get('/api/getInbox', Api.getInbox);
 app.post('/api/chatCreate', Api.chatCreate);
 app.post('/api/getChatMessages', Api.getChatMessages);
 app.post('/api/updateChatMessages', Api.updateChatMessages);
@@ -118,6 +119,7 @@ io.on('connection', function(socket) {
  //When User Disconnects
  socket.on('disconnect', function() {
   console.log('user disconnected');
+ 
  });
 
  socket.on('join', function(data) {
@@ -127,11 +129,14 @@ io.on('connection', function(socket) {
  });
 
  //When User sents Message
- socket.on('initiateChat', function(msg, socketRoomID, sendingUser) {
+ socket.on('initiateChat', function(msg, sendingUser, socketRoomID) {
   console.log('message: ' + msg);
   console.log('Socket:' + socket.id);
+  //console.log('SocketRoomID:' + socketRoomID);
 
-  io.sockets.in(socketRoomID).emit('initiateChat', msg, sendingUser);
+  io.to(socketRoomID).emit('initiateChat', msg, sendingUser, socketRoomID);
+ 
+ 
  });
 
 
